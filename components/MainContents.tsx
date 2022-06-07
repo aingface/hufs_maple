@@ -28,7 +28,7 @@ const descriptions:{
   },
   {
     title:'가입조건',
-    description:['본캐 래벨이 200이상 이어야해요'],
+    description:['레벨은 200이상', '이어야해요'],
     image :mushmom,
   },
   {
@@ -58,16 +58,20 @@ const MainContents = () => {
   const descriptionsTags=descriptions.map(desc=>{
     return(
       <TextWrapper positionY={position} innerWidth={innerWidth}>
-         <SecondaryDesc positionY={position} innerWidth={innerWidth}>
+        <SecondaryDesc positionY={position} innerWidth={innerWidth}>
           <span className='sub_title'>{desc.title}</span>
           <br />
-          {desc.description.map(line=>'line</br>')}
+          {desc.description
+            .map(line=><>
+                  {line}<br/>
+                </>
+          )}
         </SecondaryDesc>
         <Image
           src={desc.image}
           alt={`background:${desc.image}.png`}
-          width="80%"
-          height="80%"
+          width="75%"
+          height="75%"
           objectFit='cover'
         >
         </Image>
@@ -99,58 +103,7 @@ const MainContents = () => {
         가입하기
         </Link>
       </JoinButton> 
-      {descriptionsTags}
-      {/* <TextWrapper positionY={position} innerWidth={innerWidth}>
-         <SecondaryDesc positionY={position} innerWidth={innerWidth}>
-          <span className='sub_title'>가입자격</span>
-          <br />
-          외대인이라면 누구나<br/>
-          가입할 수 있어요<br/>
-        </SecondaryDesc>
-        <Image
-          src={crew}
-          alt='background: crew.png'
-          width="80%"
-          height="80%"
-          objectFit='cover'
-        >
-        </Image>
-      </TextWrapper>
-      <TextWrapper positionY={position} innerWidth={innerWidth}>
-        <SecondaryDesc positionY={position} innerWidth={innerWidth}>
-          <span className='sub_title'>가입조건</span>
-          <br />
-          본캐 레벨이 200 이상 이어야해요
-        </SecondaryDesc>
-        <Image
-          src={mushmom}
-          alt='background: mushmom.png'
-          width="80%"
-          height="80%"
-          objectFit='cover'
-        >
-        </Image>  
-      </TextWrapper>
-      <TextWrapper positionY={position} innerWidth={innerWidth}>
-        <SecondaryDesc positionY={position} innerWidth={innerWidth}>
-          <span className='sub_title'>가입문의</span>
-          <br />
-          아래 오픈카톡 닉네임을 검색해주세요<br/>
-          <span>
-            <Link href={'https://open.kakao.com/me/hufsmaple'}>
-            '엘리시움 외대경제 김규범'
-            </Link>
-          </span>
-        </SecondaryDesc>
-        <Image
-          src={lucid}
-          alt='background: lucid.png'
-          width="80%"
-          height="80%"
-          objectFit='cover'
-        >
-        </Image>
-      </TextWrapper> */}
+      { descriptionsTags}
         
     </MainContentsWrapper>
   );
@@ -225,7 +178,6 @@ const TextWrapper=styled.div<DescProps>`
     100%{transform: translateY(0);}
   }
   animation: ${props=>props.positionY >300 && 'desc-ani 0.5s linear'};
-  animation-delay: 0.5s; 
   span:hover{
     color : #1154ff;
     cursor: pointer;
