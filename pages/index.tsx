@@ -5,6 +5,7 @@ import styles from '/styles/Home.module.css'
 import Footer from 'components/Footer'
 import Header from 'components/Header'
 import MainContents from 'components/MainContents'
+
 const Home: NextPage = () => {
   return (
     <>

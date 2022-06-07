@@ -19,7 +19,7 @@ interface DescProps{
 
 const descriptions:{
   title:string,
-  description:(string|JSX.Element)[],
+  description:(string|JSX.IntrinsicAttributes)[],
   image:StaticImageData}[]=[
   {
     title:'가입자격',
@@ -48,7 +48,7 @@ const MainContents = () => {
   const [innerWidth, setInnerWidth]=useState(0);
   const onScroll=()=>{
     setPosition(window.scrollY);
-    console.log(window.scrollY);
+    // console.log(window.scrollY);
   }
   useEffect(()=>{
     window.addEventListener("scroll",onScroll);
@@ -96,7 +96,6 @@ const MainContents = () => {
         objectPosition='center'
         priority= {true}
         style={{
-          opacity: 0.8,
           zIndex:-1, 
         }}
       />
@@ -143,18 +142,16 @@ const MainContentsWrapper=styled.div`
 
 const MainTitle=styled.p<TitleProps>`
   z-index: 1;
-  /* padding: 10% 35%; */
+  padding: 20vh 0;
   width: 100%;
-  height: 50vh;
+  height: 100vh;
   color: #000000;
-  background-color:#ffffff56;
+  background:linear-gradient(#ffffffc7 10%, ${props=>60+props.positionY/5}%, #ffffff17);
   font-family: NEXON_Lv2_Gothic_OTF_Bold;
   font-size: ${props=>props.innerWidth > 800 ? '6vh' : '4vh'};
-  font-weight: bold;
   top: 0;
   left: 0;  
   display: flex;
-  align-items: center;
   position: absolute;
   justify-content: center;
 `
@@ -162,11 +159,11 @@ const SecondaryDesc=styled.p<DescProps>`
   z-index: 1;
   padding: 1% 5%;
   color: #000000;
-  line-height: 3vh;
+  line-height: 4vh;
   font-family: NEXON_Lv2_Gothic_OTF;
-  font-size: ${props=>props.innerWidth > 800 ? '2.5vh' : '1.9vh'};
+  font-size: ${props=>props.innerWidth > 800 ? '3.5vh' : '1.9vh'};
   .sub_title{
-    font-size: 1.5vh;
+    font-size: ${props=>props.innerWidth > 800 ? '2.2vh' : '2vh'};
     color: #5684fa;
   }
 `
