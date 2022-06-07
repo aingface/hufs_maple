@@ -1,5 +1,5 @@
 import React, {useState,useEffect} from 'react';
-import Image from 'next/image'
+import Image, { StaticImageData } from 'next/image'
 import styled, { keyframes } from 'styled-components';
 import Link from 'next/link';
 import mushmom from '/public/images/mushmom.png'
@@ -17,6 +17,27 @@ interface DescProps{
   innerWidth:number;
 }
 
+const descriptions:{
+  title:string,
+  description:string[],
+  image:StaticImageData}[]=[
+  {
+    title:'가입자격',
+    description:['외대인이라면 누구나','가입할 수 있어요'],
+    image :crew,
+  },
+  {
+    title:'가입조건',
+    description:['본캐 래벨이 200이상 이어야해요'],
+    image :mushmom,
+  },
+  {
+    title:'가입자격',
+    description:['오픈카톡으로 연락주세요','엘리시움 외대경제 김규범'],
+    image :lucid,
+  },
+]
+
 const MainContents = () => {
   const [position,setPosition]=useState(0);
   const [innerWidth, setInnerWidth]=useState(0);
@@ -33,6 +54,27 @@ const MainContents = () => {
       window.removeEventListener("scroll",onScroll);
     }
   },[])
+
+  const descriptionsTags=descriptions.map(desc=>{
+    return(
+      <TextWrapper positionY={position} innerWidth={innerWidth}>
+         <SecondaryDesc positionY={position} innerWidth={innerWidth}>
+          <span className='sub_title'>{desc.title}</span>
+          <br />
+          {desc.description.map(line=>'line</br>')}
+        </SecondaryDesc>
+        <Image
+          src={desc.image}
+          alt={`background:${desc.image}.png`}
+          width="80%"
+          height="80%"
+          objectFit='cover'
+        >
+        </Image>
+      </TextWrapper>
+    )
+  })
+
 
   return (
     <MainContentsWrapper>
@@ -57,8 +99,8 @@ const MainContents = () => {
         가입하기
         </Link>
       </JoinButton> 
-      
-      <TextWrapper positionY={position} innerWidth={innerWidth}>
+      {descriptionsTags}
+      {/* <TextWrapper positionY={position} innerWidth={innerWidth}>
          <SecondaryDesc positionY={position} innerWidth={innerWidth}>
           <span className='sub_title'>가입자격</span>
           <br />
@@ -93,7 +135,7 @@ const MainContents = () => {
         <SecondaryDesc positionY={position} innerWidth={innerWidth}>
           <span className='sub_title'>가입문의</span>
           <br />
-          아래 오픈카톡 닉네임을 검색해주세요<br />
+          아래 오픈카톡 닉네임을 검색해주세요<br/>
           <span>
             <Link href={'https://open.kakao.com/me/hufsmaple'}>
             '엘리시움 외대경제 김규범'
@@ -108,7 +150,7 @@ const MainContents = () => {
           objectFit='cover'
         >
         </Image>
-      </TextWrapper>
+      </TextWrapper> */}
         
     </MainContentsWrapper>
   );
@@ -188,7 +230,6 @@ const TextWrapper=styled.div<DescProps>`
     color : #1154ff;
     cursor: pointer;
   }
-  opacity: ${props=>props.positionY<600 ? 0:1};
   /* background-color: #94949452;
   /* border: 1px solid red; */
 
