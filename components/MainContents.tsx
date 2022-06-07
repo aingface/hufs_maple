@@ -19,7 +19,7 @@ interface DescProps{
 
 const descriptions:{
   title:string,
-  description:string[],
+  description:(string|JSX.Element)[],
   image:StaticImageData}[]=[
   {
     title:'가입자격',
@@ -33,7 +33,12 @@ const descriptions:{
   },
   {
     title:'가입자격',
-    description:['오픈카톡으로 연락주세요','엘리시움 외대경제 김규범'],
+    description:['오픈카톡으로 연락주세요',
+      <span>
+        <Link href={'https://open.kakao.com/me/hufsmaple'}>
+          엘리시움 외대경제 김규범
+        </Link>
+      </span>],
     image :lucid,
   },
 ]
@@ -57,7 +62,7 @@ const MainContents = () => {
 
   const descriptionsTags=descriptions.map(desc=>{
     return(
-      <TextWrapper positionY={position} innerWidth={innerWidth}>
+      <DescWrapper positionY={position} innerWidth={innerWidth}>
         <SecondaryDesc positionY={position} innerWidth={innerWidth}>
           <span className='sub_title'>{desc.title}</span>
           <br />
@@ -65,6 +70,7 @@ const MainContents = () => {
             .map(line=><>
                   {line}<br/>
                 </>
+            
           )}
         </SecondaryDesc>
         <Image
@@ -75,7 +81,7 @@ const MainContents = () => {
           objectFit='cover'
         >
         </Image>
-      </TextWrapper>
+      </DescWrapper>
     )
   })
 
@@ -112,7 +118,7 @@ const MainContents = () => {
 export default MainContents;
 
 const JoinButton=styled.div<DescProps>`
-  margin: 20vh 0 50vh 0;
+  margin: 20vh 0 60vh 0;
   padding: 1% 3%;
   font-family: NEXON_Lv2_Gothic_OTF;
   z-index: 3;
@@ -164,12 +170,12 @@ const SecondaryDesc=styled.p<DescProps>`
     color: #5684fa;
   }
 `
-const TextWrapper=styled.div<DescProps>`
+const DescWrapper=styled.div<DescProps>`
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 1vh 3vh;
-  margin-bottom: 3vh;
+  margin: 3vh 0;
   width: ${props=>props.innerWidth > 800 ? '40vw' : '80vw'};
   @keyframes desc-ani{
     0%{
@@ -177,7 +183,7 @@ const TextWrapper=styled.div<DescProps>`
       transform: translateY(3vh);}
     100%{transform: translateY(0);}
   }
-  animation: ${props=>props.positionY >300 && 'desc-ani 0.5s linear'};
+  animation: ${props=>props.positionY >400 && 'desc-ani 0.5s linear'};
   span:hover{
     color : #1154ff;
     cursor: pointer;
