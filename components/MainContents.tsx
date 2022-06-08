@@ -180,7 +180,7 @@ const DescWrapper=styled.div<DescProps>`
       transform: translateY(3vh);}
     100%{transform: translateY(0);}
   }
-  animation: ${props=>props.positionY >400 && 'desc-ani 0.5s linear'};
+  animation: ${props=>props.positionY >400 && 'desc-ani 0.6s linear'};
   span:hover{
     color : #1154ff;
     cursor: pointer;

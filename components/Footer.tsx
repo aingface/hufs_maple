@@ -15,6 +15,7 @@ const Footer = () => {
 export default Footer;
 
 const FooterWrapper=styled.footer`
+  z-index: 999;
   font-family: Maplestory_OTF_Light;
   display: flex;
   height: 10vh;

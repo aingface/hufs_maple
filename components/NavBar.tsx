@@ -38,7 +38,6 @@ const Nav=styled.nav`
 const MenuList=styled.ul`
   display: flex;
   list-style:none;
-  cursor: pointer;
   width: 100%;
   /* background-color: red; */
   align-items: center;
@@ -51,6 +50,8 @@ const MenuItem=styled.div`
   font-size: 3vh;
   display: flex;
   justify-content: center;
+  cursor: pointer;
+
 `
 const LogoItem=styled.div`
   font-family: NEXON_Lv2_Gothic_OTF;
