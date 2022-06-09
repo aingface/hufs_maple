@@ -18,7 +18,7 @@ const NavBar = () => {
         </Link>
       </LogoItem>
       <MenuList>
-        <MenuItem className='menu-item'><Link href={'/about'}>소개</Link></MenuItem>
+        <MenuItem className='menu-item'><Link href={'/about'}>정보</Link></MenuItem>
         <MenuItem><Link href={'/'}>소식</Link></MenuItem>
       </MenuList>
     </Nav>

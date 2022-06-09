@@ -32,7 +32,7 @@ const FIGURE_ITEMS=[
   },
 ]
 
-const about = () => {
+const info = () => {
   const [position,setPosition]=useState(0);
   const [innerWidth, setInnerWidth]=useState(0);
 
@@ -55,20 +55,20 @@ const about = () => {
   },[])
 
   const FigureItemList=FIGURE_ITEMS.map((item)=>(
-    <StatusItem key={item.title} positionY={position} innerWidth={innerWidth}>
+    <FigureItem key={item.title} positionY={position} innerWidth={innerWidth}>
       <Image
         src={item.src}
         alt={`background:${item.title}.png`}
-        width="100%"
-        height="100%"
+        width="150vw"
+        height="150vw"
         objectFit='cover'
         priority= {true} 
       />
-      <p style={{fontSize:'3vh',margin:'1.5vh 0',}}>{`평균${item.title}`}</p> 
-      <TestPTag {...useScrollCount(item.number)}>
+      <p className='figureName'>{`${item.title}`}</p> 
+      <p className='figureValue'{...useScrollCount(item.number)}>
         0
-      </TestPTag>  
-    </StatusItem>
+      </p>  
+    </FigureItem>
   ))  
   
   return (
@@ -79,60 +79,61 @@ const about = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Layout>
-      
         <ContentsWrapper >
-          <StatusList positionY={position} innerWidth={innerWidth}>
-            
+          <ListName positionY={position} innerWidth={innerWidth}>
+            외메동 평균은요
+          </ListName>
+          <FigureList positionY={position} innerWidth={innerWidth}>
             {FigureItemList}
-          </StatusList>
+          </FigureList>
         </ContentsWrapper>
       </Layout>  
     </>
   );
 };
 
-export default about;
+export default info;
 
-const TestPTag=styled.p`
-  z-index: 999;
-  width: 110px;
-  height: 110px;
-  display: flex;
-  justify-content: center;
-`
-
-const StatusList=styled.div<Props>`
-  display: flex;
-  flex-direction: ${props=>props.innerWidth< 800 && 'column'};
-  align-items: center;
-  padding: 1vh 3vh;
-  margin: 3vh 0;
-  width: ${props=>props.innerWidth > 800 ? '50vw' : '90vw'};
-  
-  
-  background-color: #f46df2a2;
-  /* border: 1px solid red; */
-
-`
-
-const StatusItem=styled.div<Props>`
+const FigureItem=styled.div<Props>`
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  padding: 1vh 3vh;
-  margin: 3vh 0;
-  width: ${props=>props.innerWidth > 800 ? '13vw' : '27vw'};
-  p{
-    font-family: NEXON_Lv2_Gothic_OTF;
-    font-size: ${props=>props.innerWidth > 800 ? '3vw' : '4vw'};;
-  }
-  
-  background-color: #94949452;
-  /* border: 1px solid red; */
+  margin: ${props=>props.innerWidth > 400 ? '30vh 7vh;' : '2vh 5vh;'};
+  width: ${props=>props.innerWidth > 400 ? '17vw' : '20vw'};
 
+  .figureName{
+      font-size: ${props=>props.innerWidth > 400 ? '1.5vw' : '3.5vw'};
+    color:#ffffffe8;
+    margin-top: 2vh;
+  }
+
+  .figureValue{
+    font-size: ${props=>props.innerWidth > 400 ? '5vw' : '7vw'};
+    color:#000000;
+    font-weight: bold;
+    font-family: Maplestory_OTF_Light;
+  } 
+  /* border: 1px solid red; */
 `
 
+const ListName=styled.p<Props>`  
+  font-size: 5vh;
+  position: absolute;
+  top: ${props=>props.innerWidth> 400 ? '15vh' : '4vh'};
+
+`
+const FigureList=styled.div<Props>`
+  display: flex;
+  flex-direction: ${props=>props.innerWidth> 400 ? 'row' : 'column' };
+  justify-content: center;
+  align-items: center;
+  padding: 1vh 3vh;
+  margin: ${props=>props.innerWidth> 400 ? '5vw' : '30vw'};
+  width: ${props=>props.innerWidth > 800 ? '80vw' : '90vw'};
+  /* background-color: #00eeffa1; */
+  font-family: Maplestory_OTF_Light;
+`
 
 const ContentsWrapper=styled.div`
   z-index: -1;
@@ -142,6 +143,8 @@ const ContentsWrapper=styled.div`
   flex-direction: column;
   align-items: center;
   top: 10vh;
-  /* justify-content: center; */
-  /* background-color: green; */
+  font-family: Maplestory_OTF_Light;
+  background:linear-gradient( #fdb334e9 50%,#ffffffc7 20%);
+
 `
+// rgb(253,178,52)
