@@ -2,16 +2,15 @@ import React from 'react';
 import Head from 'next/head';
 import Layout from 'components/Layout';
 import styled from 'styled-components';
-import union from '/public/images/union.png';
-import ammonite from '/public/images/ammonite.png'
-import level from '/public/images/level.png'
+// import union from '/public/images/union.png';
+// import ammonite from '/public/images/ammonite.png'
+// import level from '/public/images/level.png'
 import Image from 'next/image';
 import {useState,useEffect } from 'react';
 import useScrollCount from 'util/hooks/useScrollCount'
-import PieChart from 'components/PieChart'
+import DonutChart from 'components/DonutChart'
 import {UserData} from 'public/data/UserData'
 import {FIGURE_ITEMS} from 'public/data/FigureItems'
-
 
 interface Props{
   positionY:number;
@@ -77,7 +76,7 @@ const info = () => {
           <FigureList positionY={position} innerWidth={innerWidth}>
             {FigureItemList}
           </FigureList>
-          <PieChart></PieChart>
+          <DonutChart/>
         </ContentsWrapper>
       </Layout>  
     </>
