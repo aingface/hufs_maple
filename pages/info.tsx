@@ -2,13 +2,12 @@ import React from 'react';
 import Head from 'next/head';
 import Layout from 'components/Layout';
 import styled from 'styled-components';
-// import union from '/public/images/union.png';
-// import ammonite from '/public/images/ammonite.png'
-// import level from '/public/images/level.png'
 import Image from 'next/image';
 import {useState,useEffect } from 'react';
 import useScrollCount from 'util/hooks/useScrollCount'
 import DonutChart from 'components/DonutChart'
+import BarChart from 'components/BarChart'
+import TreemapChart from 'components/TreemapChart';
 import {UserData} from 'public/data/UserData'
 import {FIGURE_ITEMS} from 'public/data/FigureItems'
 
@@ -77,6 +76,8 @@ const info = () => {
             {FigureItemList}
           </FigureList>
           <DonutChart/>
+          <BarChart/>
+          <TreemapChart/>
         </ContentsWrapper>
       </Layout>  
     </>
@@ -84,6 +85,13 @@ const info = () => {
 };
 
 export default info;
+
+const ChartsWrapper=styled.div`
+  width: 90vw;
+  display: flex;
+  justify-content: center;
+`
+
 
 const FigureItem=styled.div<Props>`
   display: flex;
@@ -120,7 +128,7 @@ const FigureList=styled.div<Props>`
   justify-content: center;
   align-items: center;
   padding: 1vh 3vh;
-  margin: ${props=>props.innerWidth> 400 ? '5vw' : '30vw'};
+  margin: ${props=>props.innerWidth> 400 ? '2vw' : '30vw'};
   width: ${props=>props.innerWidth > 800 ? '80vw' : '90vw'};
   /* background-color: #00eeffa1; */
   font-family: Maplestory_OTF_Light;
@@ -129,13 +137,12 @@ const FigureList=styled.div<Props>`
 const ContentsWrapper=styled.div`
   z-index: -1;
   position: relative;
-  height: 200vh;
+  height: 300vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   top: 10vh;
   font-family: Maplestory_OTF_Light;
-  background:linear-gradient( #fdb334e9 50%,#ffffffc7 20%);
-
+  background:linear-gradient( #fdb334e9 30%,#e6e6e6c6 20%);
 `
 // rgb(253,178,52)
