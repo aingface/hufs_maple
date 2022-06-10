@@ -8,35 +8,26 @@ import level from '/public/images/level.png'
 import Image from 'next/image';
 import {useState,useEffect } from 'react';
 import useScrollCount from 'util/hooks/useScrollCount'
+import PieChart from 'components/PieChart'
+import {UserData} from 'public/data/UserData'
+import {FIGURE_ITEMS} from 'public/data/FigureItems'
+
 
 interface Props{
   positionY:number;
   innerWidth:number;
 }
 
-const FIGURE_ITEMS=[
-  {
-    title:'레벨',
-    src:level,
-    number:252,
-  },
-  {
-    title:'유니온',
-    src:union,
-    number:5884,
-  },
-  {
-    title:'학번',
-    src:ammonite,
-    number:18,
-  },
-]
-
 const info = () => {
   const [position,setPosition]=useState(0);
   const [innerWidth, setInnerWidth]=useState(0);
-
-  const animatedItem=useScrollCount(5884);
+  const [userData,setUserData]=useState({
+    labels:UserData.map(data=>data.year),
+    datasets:[{
+      label:"Users Gained",
+      data: UserData.map(data=>data.userGain),
+    }]
+  })
 
   const onScroll=()=>{
     setPosition(window.scrollY);
@@ -86,6 +77,7 @@ const info = () => {
           <FigureList positionY={position} innerWidth={innerWidth}>
             {FigureItemList}
           </FigureList>
+          <PieChart></PieChart>
         </ContentsWrapper>
       </Layout>  
     </>
