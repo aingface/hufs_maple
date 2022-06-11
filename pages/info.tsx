@@ -5,9 +5,9 @@ import styled from 'styled-components';
 import Image from 'next/image';
 import {useState,useEffect } from 'react';
 import useScrollCount from 'util/hooks/useScrollCount'
-import DonutChart from 'components/DonutChart'
-import BarChart from 'components/BarChart'
-import TreemapChart from 'components/TreemapChart';
+import PolarArea from 'components/Chart/PolarArea'
+import Bar from 'components/Chart/Bar'
+import ColumnBar from 'components/Chart/ColumnBar';
 import {UserData} from 'public/data/UserData'
 import {FIGURE_ITEMS} from 'public/data/FigureItems'
 
@@ -75,9 +75,9 @@ const info = () => {
           <FigureList positionY={position} innerWidth={innerWidth}>
             {FigureItemList}
           </FigureList>
-          <DonutChart/>
-          <BarChart/>
-          <TreemapChart/>
+          <PolarArea/>
+          <ColumnBar/>
+          <Bar/>
         </ContentsWrapper>
       </Layout>  
     </>
@@ -137,12 +137,13 @@ const FigureList=styled.div<Props>`
 const ContentsWrapper=styled.div`
   z-index: -1;
   position: relative;
-  height: 300vh;
+  height: 420vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   top: 10vh;
   font-family: Maplestory_OTF_Light;
-  background:linear-gradient( #fdb334e9 30%,#e6e6e6c6 20%);
+  background:linear-gradient( #fdb334e9 25%,#e6e6e6c6 20%);
+  min-width: 280px;
 `
 // rgb(253,178,52)

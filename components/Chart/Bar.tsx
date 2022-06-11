@@ -17,7 +17,7 @@ export const barData :BarDataProps = {
   series:[
     {
       name:'test name',
-      data:[4,1,2,13,10,9,13,9,2,6],
+      data:[1,2,13,10,9,13,9,2,6],
     }
   ], 
   options: {
@@ -35,7 +35,7 @@ export const barData :BarDataProps = {
 
     xaxis:{
       type: 'category',
-      categories:['신원미상','아르카나','모라스','에스페라','셀라스','문브릿지','미궁','리멘','세르니움','후르니움','호텔'],
+      categories:['아르카나','모라스','에스페라','셀라스','문브릿지','미궁','리멘','세르니움','후르니움','호텔'],
       
       labels:{
         style:{
@@ -69,14 +69,14 @@ export const barData :BarDataProps = {
 
 
 
-const BarChart = () => {
+const Bar = () => {
   return (
     <ChartWrapper>
       <ApexChart 
         options={barData.options}
         series={barData.series}
         type="bar" 
-        // width='400'
+        width='400'
         height='500'
       />
     </ChartWrapper>
@@ -84,11 +84,12 @@ const BarChart = () => {
 };
 
 const ChartWrapper=styled.div`
-  width: 45vh;
+  width: 50vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 3vh;
+  margin: 20vh 0vh;
+  /* background-color: #518700; */
 `
 
-export default BarChart;
+export default Bar;
