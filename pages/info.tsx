@@ -70,7 +70,7 @@ const info = () => {
       <Layout>
         <ContentsWrapper >
           <ListName positionY={position} innerWidth={innerWidth}>
-            외메동 평균은요
+            외메동 평균은
           </ListName>
           <FigureList positionY={position} innerWidth={innerWidth}>
             {FigureItemList}
@@ -86,13 +86,6 @@ const info = () => {
 
 export default info;
 
-const ChartsWrapper=styled.div`
-  width: 90vw;
-  display: flex;
-  justify-content: center;
-`
-
-
 const FigureItem=styled.div<Props>`
   display: flex;
   justify-content: center;
@@ -102,8 +95,8 @@ const FigureItem=styled.div<Props>`
   width: ${props=>props.innerWidth > 400 ? '17vw' : '20vw'};
 
   .figureName{
-      font-size: ${props=>props.innerWidth > 400 ? '1.5vw' : '3.5vw'};
-    color:#ffffffe8;
+    font-size: ${props=>props.innerWidth > 400 ? '1.5vw' : '3.5vw'};
+    color:#000000e8;
     margin-top: 2vh;
   }
 
@@ -111,15 +104,20 @@ const FigureItem=styled.div<Props>`
     font-size: ${props=>props.innerWidth > 400 ? '5vw' : '7vw'};
     color:#000000;
     font-weight: bold;
-    font-family: Maplestory_OTF_Light;
+    /* font-family: NEXON_Lv2_Gothic_OTF_Bold; */
+    /* font-family: Maplestory_OTF_Light; */
+
   } 
   /* border: 1px solid red; */
 `
 
 const ListName=styled.p<Props>`  
-  font-size: 5vh;
+  font-size: 7vh;
   position: absolute;
   top: ${props=>props.innerWidth> 400 ? '15vh' : '4vh'};
+  /* font-family: NEXON_Lv2_Gothic_OTF; */
+  /* font-weight: bold; */
+  color: #ffffff;
 
 `
 const FigureList=styled.div<Props>`
@@ -141,9 +139,8 @@ const ContentsWrapper=styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  top: 10vh;
+  /* top: 7vh; */
   font-family: Maplestory_OTF_Light;
-  background:linear-gradient( #fdb334e9 25%,#e6e6e6c6 20%);
+  background:linear-gradient( #5653fefd, 15%,#862cbaf9 25%, #f6f7f9 5%);
   min-width: 280px;
 `
-// rgb(253,178,52)

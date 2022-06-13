@@ -1,67 +1,14 @@
 import React from 'react';
 import dynamic from 'next/dynamic'
 const ApexChart = dynamic(() => import("react-apexcharts"), { ssr: false });
-// import {donutData} from 'public/data/DonutData'
+import {ColumnBarData} from 'public/data/ChartData'
 import { ApexOptions } from "apexcharts";
 import styled from 'styled-components';
 
-
-export interface ColumnProps{
-  series: [{
-    data:number[]
-  }],
-  options:ApexOptions,
-}
-
-
-
-const ColumnBarData:ColumnProps={
-  series:[{
-    data:[20,17,10,10,9,5,3,3,5]  
-  }]
-  ,
-  options: {
-    chart: {
-      type: 'bar',
-      height: 350,
-    },
-    plotOptions: {
-      bar: {
-          columnWidth:'45%',
-          distributed: true,
-      },
-        
-    },
-    dataLabels: {
-      enabled: false
-    },
-
-    title: {
-      text: '서버 분포',
-      align: 'center',
-      // margin: 50,
-      style:{
-        fontFamily:'Maplestory_OTF_Light',
-        fontSize:'30', 
-      },
-    },
-    legend: {
-      show: false,
-    },
-    xaxis: {
-      categories: ['루나','엘리시움','스카니아','크로아','베라','오로라','이노시스','리부트2',['아케인','노바','리부트1','레드','제니스'] ],
-      labels: {
-        style: {
-          fontSize: '12px'
-        }
-      }
-    }
-  },
-
-};
 const ColumnBar = () => {
   return (
     <ChartWrapper>
+      <p className='chart-title'>활동 서버 분포</p>
       <ApexChart 
         options={ColumnBarData.options} 
         series={ColumnBarData.series} 
@@ -69,20 +16,28 @@ const ColumnBar = () => {
         width={600}
         height={600}
       />
+      <p className='chart-description'>많은 분들이 도시서버에서 플레이를 하고 있어요</p>
     </ChartWrapper>
   );
 };
 
-
-
-
 export default ColumnBar;
 
 const ChartWrapper=styled.div`
-  width: 50vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 20vh 0;
-  /* background-color: #7a7a7a; */
+  flex-direction: column;
+  width: 60vw;
+  margin-top: 10vh;
+  .chart-description{
+    font-family: NEXON_Lv2_Gothic_OTF;
+    margin: 1vh 0;
+  }
+  .chart-title{
+    font-size: 3vw;
+    font-family: Maplestory_OTF_Light;
+    margin: 5vh 0;
+  }
+  /* background-color: aqua; */
 `

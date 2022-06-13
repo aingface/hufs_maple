@@ -136,7 +136,7 @@ const MainContentsWrapper=styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  top: 10vh;
+  /* top: 7vh; */
   justify-content: center;
 `
 

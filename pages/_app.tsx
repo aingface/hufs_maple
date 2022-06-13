@@ -3,6 +3,8 @@ import type { AppProps } from 'next/app'
 import '/public/static/fonts/style.css'
 import { createGlobalStyle } from "styled-components";
 
+
+
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>

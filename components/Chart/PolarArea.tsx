@@ -1,12 +1,13 @@
 import React from 'react';
 import dynamic from 'next/dynamic'
 const ApexChart = dynamic(() => import("react-apexcharts"), { ssr: false });
-import {PolarData} from 'public/data/PolarData'
+import {PolarData} from 'public/data/ChartData'
 import styled from 'styled-components';
 
-const DonutChart = () => {
+const PolarArea = () => {
   return (
     <ChartWrapper>
+      <p className='chart-title'>캠퍼스 별 학생 수</p>
       <ApexChart 
         options={PolarData.options}
         series={PolarData.series}
@@ -14,17 +15,28 @@ const DonutChart = () => {
         width="450"
         height='450'
       />
+      <p className='chart-description'>모두 67명이 외메동과 함께 메이플을 즐기고 있어요</p>
     </ChartWrapper>
   );
 };
 
-export default DonutChart;
+export default PolarArea;
 
 const ChartWrapper=styled.div`
-  width: 50vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 20vh 0vh;
+  flex-direction: column;
+  width: 60vw;
+  margin-top: 10vh;
+  .chart-description{
+    font-family: NEXON_Lv2_Gothic_OTF;
+    margin: 5vh 0;
+  }
+  .chart-title{
+    font-size: 3vw;
+    font-family: Maplestory_OTF_Light;
+    margin: 5vh 0;
+  }
   /* background-color: aqua; */
 `

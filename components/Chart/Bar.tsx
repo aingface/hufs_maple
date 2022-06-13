@@ -1,95 +1,42 @@
 import React from 'react';
 import dynamic from 'next/dynamic'
 const ApexChart = dynamic(() => import("react-apexcharts"), { ssr: false });
-// import {donutData} from 'public/data/DonutData'
-import { ApexOptions } from "apexcharts";
+import {BarData} from 'public/data/ChartData'
 import styled from 'styled-components';
-
-
-export interface BarDataProps{
-  series: any,
-  options:ApexOptions,
-}
-
-//마을 별 분포
-//바차트 데이터 및 옵션
-export const barData :BarDataProps = {
-  series:[
-    {
-      name:'test name',
-      data:[1,2,13,10,9,13,9,2,6],
-    }
-  ], 
-  options: {
-    chart: {
-      type: 'bar',
-    },
-    theme: {
-      monochrome: {
-        enabled: true,
-        color: '#abd520',
-        shadeTo: 'light',
-        shadeIntensity: 0.65
-      }
-    },
-
-    xaxis:{
-      type: 'category',
-      categories:['아르카나','모라스','에스페라','셀라스','문브릿지','미궁','리멘','세르니움','후르니움','호텔'],
-      
-      labels:{
-        style:{
-          fontFamily:'Maplestory_OTF_Light',
-        }
-      }
-    
-    },
-    plotOptions: {
-      bar:{
-        borderRadius:3,
-        horizontal:true,
-      },
-    },
-    title: {
-      text: '마을 별 분포',
-      align: 'center',
-      style:{
-        fontFamily:'Maplestory_OTF_Light',
-        fontSize:'30',
-      }
-    },
-    dataLabels: {
-      style: {
-        fontFamily:'Maplestory_OTF_Light',
-        colors: ['#000000']
-      }
-    }
-  },
-}
-
-
 
 const Bar = () => {
   return (
     <ChartWrapper>
+      <p className='chart-title'>마을 별 분포</p>
       <ApexChart 
-        options={barData.options}
-        series={barData.series}
+        options={BarData.options}
+        series={BarData.series}
         type="bar" 
-        width='400'
-        height='500'
+        width='600'
+        height='600'
       />
+      <p className='chart-description'>에스페라 ~ 리멘 사이 유저가 가장 많아요</p>
     </ChartWrapper>
   );
 };
 
 const ChartWrapper=styled.div`
-  width: 50vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 20vh 0vh;
-  /* background-color: #518700; */
+  flex-direction: column;
+  width: 60vw;
+  margin: 10vh;
+  .chart-description{
+    font-family: NEXON_Lv2_Gothic_OTF;
+    margin: 5vh 0;
+  }
+  .chart-title{
+    font-size: 3vw;
+    font-family: Maplestory_OTF_Light;
+    margin: 5vh 0;
+  }
+  /* background-color: aqua; */
 `
 
 export default Bar;

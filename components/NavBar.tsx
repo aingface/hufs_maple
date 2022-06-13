@@ -8,13 +8,17 @@ const NavBar = () => {
     <Nav>     
       <LogoItem>
         <Link href={'/'}>  
-          <Image
-            src={aing_boo}
-            alt={`background:aing_boo.png`}
-            width= '70%'
-            height='70%'
-            objectFit='cover'
-          />  
+          <a className='logo-title'>
+            <Image
+              src={aing_boo}
+              alt={`background:aing_boo.png`}
+              width= '56vw'
+              height='40vh'
+              objectFit='cover'
+              style={{margin:'0'}}
+            />
+            <p>외메동</p>
+          </a> 
         </Link>
       </LogoItem>
       <MenuList>
@@ -41,22 +45,33 @@ const MenuList=styled.ul`
   width: 100%;
   /* background-color: red; */
   align-items: center;
-  justify-content: center;
-  position: absolute;
+  justify-content: flex-end;
+  margin-right: 15vw;
+  /* position: absolute; */
 `
 const MenuItem=styled.div`
   margin-right:2vw;
   font-family: NEXON_Lv2_Gothic_OTF;
-  font-size: 3vh;
   display: flex;
   justify-content: center;
   cursor: pointer;
-
 `
 const LogoItem=styled.div`
   font-family: NEXON_Lv2_Gothic_OTF;
-  display: flex;
   cursor: pointer;
-  position: absolute;
-  left: 3vw;
+  /* position: absolute; */
+  width: 20vw;
+  height: 100%;
+  left: 1vw;
+  .logo-title{
+    display: flex;
+    flex-direction: row;  
+    font-size: 2vw;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
+    height: 100%;
+    font-family: Maplestory_OTF_Light;
+    p{margin-left:1vw}
+  }
 `
