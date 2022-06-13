@@ -27,6 +27,10 @@ export const PolarData :PolarDataProps = {
       position: "left",
     }
     ,
+    responsive: [{
+      breakpoint: 400,
+      options: {},
+    }],
     plotOptions: {
       polarArea: {
         rings: {

@@ -5,6 +5,8 @@ import Link from 'next/link';
 import mushmom from '/public/images/mushmom.png'
 import lucid from '/public/images/lucid.png'
 import crew from '/public/images/crew.png'
+import maple_island from '/public/images/maple_island.jpeg'
+import Layout from 'components/Layout';
 
 
 interface TitleProps{
@@ -62,7 +64,7 @@ const MainContents = () => {
 
   const descriptionsTags=descriptions.map(desc=>{
     return(
-      <DescWrapper positionY={position} innerWidth={innerWidth}>
+      <DescItem positionY={position} innerWidth={innerWidth}>
         <SecondaryDesc positionY={position} innerWidth={innerWidth}>
           <span className='sub_title'>{desc.title}</span>
           <br />
@@ -81,80 +83,50 @@ const MainContents = () => {
           objectFit='cover'
         >
         </Image>
-      </DescWrapper>
+      </DescItem>
     )
   })
 
 
   return (
-    <MainContentsWrapper>
-      <Image
-        src='/images/rudibrium2.jpeg'
-        alt='background: maple_island.jpeg'
-        layout='fill'
-        objectFit='cover'
-        objectPosition='center'
-        priority= {true}
-        style={{
-          zIndex:-1, 
-        }}
-      />
-      <MainTitle positionY={position} innerWidth={innerWidth}>
-        HUFS 그리고 메이플<br /> 
-        외메동에서 더 즐겁게
-      </MainTitle>
-      <JoinButton positionY={position} innerWidth={innerWidth} className='btn-primary'>
-        <Link href={'https://open.kakao.com/me/hufsmaple'}>
-        가입하기
-        </Link>
-      </JoinButton> 
-      { descriptionsTags}
-        
-    </MainContentsWrapper>
+    <Layout>
+      <MainContentsWrapper>
+        <BgImgWrapper>
+          <Image
+            src={maple_island}
+            alt='background: maple_island.jpeg'
+            width='100vw'
+            height='100vh'
+            layout='fill'
+            objectFit='cover'
+            objectPosition='center'
+            priority= {true}
+            style={{
+              zIndex:-1, 
+            }}
+          />
+        </BgImgWrapper>  
+        <MainTitle positionY={position} innerWidth={innerWidth}>
+          HUFS 그리고 메이플<br /> 
+          외메동에서 더 즐겁게
+        </MainTitle>
+        <JoinButton positionY={position} innerWidth={innerWidth} className='btn-primary'>
+          <Link href={'https://open.kakao.com/me/hufsmaple'}>
+          가입하기
+          </Link>
+        </JoinButton>
+        <DescWrapper>
+          { descriptionsTags}
+        </DescWrapper>  
+      </MainContentsWrapper>
+    </Layout>
   );
 } ;
 
 export default MainContents;
 
-const JoinButton=styled.div<DescProps>`
-  margin: 20vh 0 60vh 0;
-  padding: 1% 3%;
-  font-family: NEXON_Lv2_Gothic_OTF;
-  z-index: 3;
-  cursor: pointer;
-  width:${props=>props.innerWidth > 800 ? '20vh' : '25vh'};
-  height: 7vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 1.2rem;
-`
 
-const MainContentsWrapper=styled.div`
-  position: relative;
-  height: 200vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  /* top: 7vh; */
-  justify-content: center;
-`
 
-const MainTitle=styled.p<TitleProps>`
-  z-index: 1;
-  padding: 20vh 0;
-  width: 100%;
-  height: 100vh;
-  color: #000000;
-  background:linear-gradient(#ffffffc7 10%, ${props=>60+props.positionY/5}%, #ffffff17);
-  font-family: NEXON_Lv2_Gothic_OTF_Bold;
-  font-size: ${props=>props.innerWidth > 800 ? '6vh' : '4vh'};
-  top: 0;
-  left: 0;  
-  display: flex;
-  position: absolute;
-  justify-content: center;
-`
 const SecondaryDesc=styled.p<DescProps>`
   z-index: 1;
   padding: 1% 5%;
@@ -167,13 +139,20 @@ const SecondaryDesc=styled.p<DescProps>`
     color: #5684fa;
   }
 `
-const DescWrapper=styled.div<DescProps>`
+const BgImgWrapper=styled.div`
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+`
+
+const DescItem=styled.div<DescProps>`
+  position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width: ${props=>props.innerWidth > 800 ? '40vw' : '80vw'};
   padding: 1vh 3vh;
   margin: 3vh 0;
-  width: ${props=>props.innerWidth > 800 ? '40vw' : '80vw'};
   @keyframes desc-ani{
     0%{
       opacity: 0;
@@ -185,7 +164,53 @@ const DescWrapper=styled.div<DescProps>`
     color : #1154ff;
     cursor: pointer;
   }
-  /* background-color: #94949452;
-  /* border: 1px solid red; */
+  
+  /* background-color: #ff7b00; */
+`
 
+const DescWrapper=styled.div`
+  display: flex;
+  flex-direction: column;
+  margin: 25vh;
+  justify-content: center;
+  align-items: center;
+
+  /* background-color: #1aa861; */
+  
+`
+
+const JoinButton=styled.div<DescProps>`
+  margin: 20vh 0 25vh 0;
+  padding: 1% 3%;
+  font-family: NEXON_Lv2_Gothic_OTF;
+  z-index: 3;
+  cursor: pointer;
+  width:${props=>props.innerWidth > 800 ? '20vh' : '25vh'};
+  height: 7vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+`
+
+const MainTitle=styled.p<TitleProps>`
+  z-index: 10;
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+  margin: 15vh 0;
+  width: 100vw;
+  /* height: 100vh; */
+  font-size: ${props=>props.innerWidth > 800 ? '6vh' : '4vh'};
+  font-weight: bold;
+
+  /* background-color: red; */
+`
+
+const MainContentsWrapper=styled.div`
+  position: relative;
+  height: 200vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `

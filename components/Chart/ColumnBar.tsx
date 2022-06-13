@@ -13,8 +13,8 @@ const ColumnBar = () => {
         options={ColumnBarData.options} 
         series={ColumnBarData.series} 
         type="bar"
-        width={600}
-        height={600}
+        width='350'
+        // height='500'
       />
       <p className='chart-description'>많은 분들이 도시서버에서 플레이를 하고 있어요</p>
     </ChartWrapper>
@@ -28,16 +28,20 @@ const ChartWrapper=styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  width: 60vw;
-  margin-top: 10vh;
+  width: 100%;
+  margin-top: 12vh;
   .chart-description{
     font-family: NEXON_Lv2_Gothic_OTF;
-    margin: 1vh 0;
+    margin: 5vh 0;
   }
   .chart-title{
     font-size: 3vw;
     font-family: Maplestory_OTF_Light;
     margin: 5vh 0;
+  }
+  p{
+    font-size: 1.5vw;
+    font-weight: bold;
   }
   /* background-color: aqua; */
 `

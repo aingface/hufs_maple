@@ -3,13 +3,14 @@ import Head from 'next/head';
 import Layout from 'components/Layout';
 import styled from 'styled-components';
 import Image from 'next/image';
+import reverse_city from '/public/images/reverse_city.jpeg'
 import {useState,useEffect } from 'react';
 import useScrollCount from 'util/hooks/useScrollCount'
 import PolarArea from 'components/Chart/PolarArea'
 import Bar from 'components/Chart/Bar'
 import ColumnBar from 'components/Chart/ColumnBar';
 import {UserData} from 'public/data/UserData'
-import {FIGURE_ITEMS} from 'public/data/FigureItems'
+import {AVG_ITEMS} from 'public/data/AVGItems'
 
 interface Props{
   positionY:number;
@@ -19,13 +20,6 @@ interface Props{
 const info = () => {
   const [position,setPosition]=useState(0);
   const [innerWidth, setInnerWidth]=useState(0);
-  const [userData,setUserData]=useState({
-    labels:UserData.map(data=>data.year),
-    datasets:[{
-      label:"Users Gained",
-      data: UserData.map(data=>data.userGain),
-    }]
-  })
 
   const onScroll=()=>{
     setPosition(window.scrollY);
@@ -43,8 +37,8 @@ const info = () => {
     }
   },[])
 
-  const FigureItemList=FIGURE_ITEMS.map((item)=>(
-    <FigureItem key={item.title} positionY={position} innerWidth={innerWidth}>
+  const AVGItemList=AVG_ITEMS.map((item)=>(
+    <AVGCard key={item.title} positionY={position} innerWidth={innerWidth}>
       <Image
         src={item.src}
         alt={`background:${item.title}.png`}
@@ -53,31 +47,45 @@ const info = () => {
         objectFit='cover'
         priority= {true} 
       />
-      <p className='figureName'>{`${item.title}`}</p> 
-      <p className='figureValue'{...useScrollCount(item.number)}>
+      <p className='AVGListTitle'>{`${item.title}`}</p> 
+      <p className='AVGValue'{...useScrollCount(item.number)}>
         0
       </p>  
-    </FigureItem>
+    </AVGCard>
   ))  
   
   return (
     <>
-      <Head>
-        <title>한국외대 메이플스토리 동아리 소개</title>
-        <meta name="description" content="Hufs Maplestory club" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
       <Layout>
         <ContentsWrapper >
-          <ListName positionY={position} innerWidth={innerWidth}>
-            외메동 평균은
-          </ListName>
-          <FigureList positionY={position} innerWidth={innerWidth}>
-            {FigureItemList}
-          </FigureList>
-          <PolarArea/>
-          <ColumnBar/>
-          <Bar/>
+          <BgImgWrapper>
+            <Image
+              src={reverse_city}
+              alt={`background:${reverse_city}.jpeg`}
+              width="100vw"
+              height='100vh'
+              layout='fill'
+              objectFit='cover'
+              objectPosition='center'
+              priority= {true}
+              style={{
+                zIndex:-1, 
+              }}
+            />
+          </BgImgWrapper>
+          <AVGListWrapper>    
+            <AVGListTitle positionY={position} innerWidth={innerWidth}>
+                외메동 평균은
+            </AVGListTitle>
+            <AVGCardsWrapper positionY={position} innerWidth={innerWidth}>
+              {AVGItemList}
+            </AVGCardsWrapper>
+          </AVGListWrapper>    
+          <ChartWrapper>
+            <PolarArea/>
+            <ColumnBar/>
+            <Bar/>
+          </ChartWrapper>
         </ContentsWrapper>
       </Layout>  
     </>
@@ -86,61 +94,82 @@ const info = () => {
 
 export default info;
 
-const FigureItem=styled.div<Props>`
+const ChartWrapper=styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 80vw;
+  height: 300vh;
+  /* background-color: beige; */
+`
+
+const AVGCard=styled.div<Props>`
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  margin: ${props=>props.innerWidth > 400 ? '30vh 7vh;' : '2vh 5vh;'};
-  width: ${props=>props.innerWidth > 400 ? '17vw' : '20vw'};
-
-  .figureName{
-    font-size: ${props=>props.innerWidth > 400 ? '1.5vw' : '3.5vw'};
+  margin: ${props=>props.innerWidth > 400 ? '2vh 3vw;' : '2vh 2vw;'};
+  width: ${props=>props.innerWidth > 400 ? '17vw' : '50vw'};
+  height: ${props=>props.innerWidth > 820 ? '50vh' : '22vh'};
+  padding: ${props=>props.innerWidth > 400 ? '4vh 7vh;' : '2vh 5vh;'};
+  .AVGListTitle{
+    font-size: ${props=>props.innerWidth > 400 ? '1.5vw' : '2.5vw'};
     color:#000000e8;
     margin-top: 2vh;
   }
 
-  .figureValue{
+  .AVGValue{
     font-size: ${props=>props.innerWidth > 400 ? '5vw' : '7vw'};
     color:#000000;
     font-weight: bold;
-    /* font-family: NEXON_Lv2_Gothic_OTF_Bold; */
-    /* font-family: Maplestory_OTF_Light; */
-
-  } 
+  }
+  background-color : #ffffff9c;
+  border-radius: 10px;
   /* border: 1px solid red; */
 `
 
-const ListName=styled.p<Props>`  
-  font-size: 7vh;
-  position: absolute;
-  top: ${props=>props.innerWidth> 400 ? '15vh' : '4vh'};
-  /* font-family: NEXON_Lv2_Gothic_OTF; */
-  /* font-weight: bold; */
+const AVGListTitle=styled.p<Props>`  
+  font-size: ${props=>props.innerWidth > 400 ? '3vw' : '8vw'};
+  margin: 7vh;
   color: #ffffff;
 
 `
-const FigureList=styled.div<Props>`
+const AVGCardsWrapper=styled.div<Props>`
   display: flex;
   flex-direction: ${props=>props.innerWidth> 400 ? 'row' : 'column' };
   justify-content: center;
   align-items: center;
-  padding: 1vh 3vh;
-  margin: ${props=>props.innerWidth> 400 ? '2vw' : '30vw'};
-  width: ${props=>props.innerWidth > 800 ? '80vw' : '90vw'};
-  /* background-color: #00eeffa1; */
+  width: ${props=>props.innerWidth > 400 ? '80vw' : '90vw'};
   font-family: Maplestory_OTF_Light;
+  /* background-color: #00eeffa1; */
+`
+
+const AVGListWrapper=styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; 
+  width: 100vw;
+`
+
+const BgImgWrapper=styled.div`
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
 `
 
 const ContentsWrapper=styled.div`
   z-index: -1;
   position: relative;
-  height: 420vh;
+  height: 410vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* top: 7vh; */
   font-family: Maplestory_OTF_Light;
-  background:linear-gradient( #5653fefd, 15%,#862cbaf9 25%, #f6f7f9 5%);
-  min-width: 280px;
+  background:linear-gradient( #f6f7f9ce);
+  min-width: 350px;
+  width: 100vw;
+
+  /* background:linear-gradient( #60f4fffc, 15%,#862cbaf9 25%, #f6f7f9ce 5%); */
 `

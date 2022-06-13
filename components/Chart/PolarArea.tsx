@@ -12,8 +12,11 @@ const PolarArea = () => {
         options={PolarData.options}
         series={PolarData.series}
         type="polarArea" 
-        width="450"
-        height='450'
+        width="350"
+        // height='100%'
+        style={{
+          // backgroundColor:'red'
+        }}
       />
       <p className='chart-description'>모두 67명이 외메동과 함께 메이플을 즐기고 있어요</p>
     </ChartWrapper>
@@ -27,8 +30,8 @@ const ChartWrapper=styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  width: 60vw;
-  margin-top: 10vh;
+  width: 100%;
+  margin-top: 12vh;
   .chart-description{
     font-family: NEXON_Lv2_Gothic_OTF;
     margin: 5vh 0;
@@ -37,6 +40,10 @@ const ChartWrapper=styled.div`
     font-size: 3vw;
     font-family: Maplestory_OTF_Light;
     margin: 5vh 0;
+  }
+  p{
+    font-size: 1.5vw;
+    font-weight: bold;
   }
   /* background-color: aqua; */
 `

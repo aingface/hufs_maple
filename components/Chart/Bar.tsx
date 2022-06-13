@@ -12,8 +12,8 @@ const Bar = () => {
         options={BarData.options}
         series={BarData.series}
         type="bar" 
-        width='600'
-        height='600'
+        width='350'
+        // height='500'
       />
       <p className='chart-description'>에스페라 ~ 리멘 사이 유저가 가장 많아요</p>
     </ChartWrapper>
@@ -25,8 +25,8 @@ const ChartWrapper=styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  width: 60vw;
-  margin: 10vh;
+  width: 100%;
+  margin-top: 12vh;
   .chart-description{
     font-family: NEXON_Lv2_Gothic_OTF;
     margin: 5vh 0;
@@ -35,6 +35,10 @@ const ChartWrapper=styled.div`
     font-size: 3vw;
     font-family: Maplestory_OTF_Light;
     margin: 5vh 0;
+  }
+  p{
+    font-size: 1.5vw;
+    font-weight: bold;
   }
   /* background-color: aqua; */
 `

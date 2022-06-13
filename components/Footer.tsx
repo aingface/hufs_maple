@@ -25,6 +25,7 @@ const FooterWrapper=styled.footer`
   margin: 0;
   padding: 1rem;
   align-items: center;
+  width: 100vw;
 `
 const Pstyle=styled.p`
   font-size: 0.8rem;
