@@ -1,5 +1,4 @@
 import React from 'react';
-import Head from 'next/head';
 import Layout from 'components/Layout';
 import styled from 'styled-components';
 import Image from 'next/image';
@@ -9,8 +8,9 @@ import useScrollCount from 'util/hooks/useScrollCount'
 import PolarArea from 'components/Chart/PolarArea'
 import Bar from 'components/Chart/Bar'
 import ColumnBar from 'components/Chart/ColumnBar';
-import {UserData} from 'public/data/UserData'
 import {AVG_ITEMS} from 'public/data/AVGItems'
+import CarouselChart from 'components/CarouselChart'
+
 
 interface Props{
   positionY:number;
@@ -42,8 +42,8 @@ const info = () => {
       <Image
         src={item.src}
         alt={`background:${item.title}.png`}
-        width="150vw"
-        height="150vw"
+        width="100vw"
+        height="100vw"
         objectFit='cover'
         priority= {true} 
       />
@@ -62,7 +62,7 @@ const info = () => {
             <Image
               src={reverse_city}
               alt={`background:${reverse_city}.jpeg`}
-              width="100vw"
+              width='100vw'
               height='100vh'
               layout='fill'
               objectFit='cover'
@@ -81,12 +81,13 @@ const info = () => {
               {AVGItemList}
             </AVGCardsWrapper>
           </AVGListWrapper>    
-          <ChartWrapper>
+          <ChartWrapper positionY={position} innerWidth={innerWidth}>
             <PolarArea/>
             <ColumnBar/>
             <Bar/>
           </ChartWrapper>
         </ContentsWrapper>
+        <CarouselChart/>
       </Layout>  
     </>
   );
@@ -94,13 +95,14 @@ const info = () => {
 
 export default info;
 
-const ChartWrapper=styled.div`
+const ChartWrapper=styled.div<Props>`
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  flex-direction: ${props=>props.innerWidth> 400 ? 'row' : 'column' };
+  /* justify-content: center; */
+  align-items: start;
   width: 80vw;
   height: 300vh;
+  flex-wrap: no-wrap;
   /* background-color: beige; */
 `
 
@@ -111,20 +113,20 @@ const AVGCard=styled.div<Props>`
   align-items: center;
   margin: ${props=>props.innerWidth > 400 ? '2vh 3vw;' : '2vh 2vw;'};
   width: ${props=>props.innerWidth > 400 ? '17vw' : '50vw'};
-  height: ${props=>props.innerWidth > 820 ? '50vh' : '22vh'};
-  padding: ${props=>props.innerWidth > 400 ? '4vh 7vh;' : '2vh 5vh;'};
+  height: ${props=>props.innerWidth > 820 ? '40vh' : '22vh'};
+  /* padding: ${props=>props.innerWidth > 400 ? '0 7vh;' : '2vh 5vh;'}; */
+
   .AVGListTitle{
     font-size: ${props=>props.innerWidth > 400 ? '1.5vw' : '2.5vw'};
     color:#000000e8;
     margin-top: 2vh;
   }
-
   .AVGValue{
     font-size: ${props=>props.innerWidth > 400 ? '5vw' : '7vw'};
     color:#000000;
     font-weight: bold;
   }
-  background-color : #ffffff9c;
+  background-color : #ffffff77;
   border-radius: 10px;
   /* border: 1px solid red; */
 `
@@ -142,6 +144,8 @@ const AVGCardsWrapper=styled.div<Props>`
   align-items: center;
   width: ${props=>props.innerWidth > 400 ? '80vw' : '90vw'};
   font-family: Maplestory_OTF_Light;
+  margin: ${props=>props.innerWidth> 400 ? '10vh 0 24.5vh 0' : '0vh' };
+  
   /* background-color: #00eeffa1; */
 `
 
@@ -162,7 +166,7 @@ const BgImgWrapper=styled.div`
 const ContentsWrapper=styled.div`
   z-index: -1;
   position: relative;
-  height: 410vh;
+  height: 210vh;
   display: flex;
   flex-direction: column;
   align-items: center;

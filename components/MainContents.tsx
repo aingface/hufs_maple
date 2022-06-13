@@ -1,7 +1,7 @@
 import React, {useState,useEffect} from 'react';
 import Image, { StaticImageData } from 'next/image'
-import styled, { keyframes } from 'styled-components';
 import Link from 'next/link';
+import styled, { keyframes } from 'styled-components';
 import mushmom from '/public/images/mushmom.png'
 import lucid from '/public/images/lucid.png'
 import crew from '/public/images/crew.png'
@@ -164,7 +164,7 @@ const DescItem=styled.div<DescProps>`
     color : #1154ff;
     cursor: pointer;
   }
-  
+
   /* background-color: #ff7b00; */
 `
 

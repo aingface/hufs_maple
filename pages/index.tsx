@@ -9,17 +9,9 @@ import Layout from 'components/Layout'
 const Home: NextPage = () => {
   return (
     <>
-      <Head>
-        <title>한국외대 메이플스토리 동아리</title>
-        <meta name="description" content="Hufs Maplestory club" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-      {/* <Header/> */}
       <Layout>
-        <MainContents/>
-        
+        <MainContents/>  
       </Layout>
-      {/* <Footer/>   */}
     </>
   )
 }

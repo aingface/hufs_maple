@@ -30,7 +30,7 @@ const ChartWrapper=styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  width: 100%;
+  width: 40vw;
   margin-top: 12vh;
   .chart-description{
     font-family: NEXON_Lv2_Gothic_OTF;
@@ -45,5 +45,7 @@ const ChartWrapper=styled.div`
     font-size: 1.5vw;
     font-weight: bold;
   }
+  border-radius: 5px;
+  
   /* background-color: aqua; */
 `

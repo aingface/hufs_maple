@@ -84,10 +84,10 @@ export const ColumnBarData:BarDataProps={
     },
     plotOptions: {
       bar: {
-          borderRadius:2,
-          columnWidth:'45%',
-          distributed: true,
-        horizontal:false,
+        borderRadius: 2,
+        columnWidth: '45%',
+        distributed: true,
+        horizontal: false,
 
       },  
     },
@@ -101,7 +101,7 @@ export const ColumnBarData:BarDataProps={
       categories: ['루나','엘리시움','스카니아','크로아','베라','오로라','이노시스','리부트2',['아케인','노바','리부트1','레드','제니스'] ],
       labels: {
         style: {
-          fontSize: '12px'
+          fontSize: '9px'
         }
       }
     },
