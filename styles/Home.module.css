@@ -119,3 +119,16 @@
 }
 
 
+.overlapGrid {
+  display: grid;
+  grid-template-areas: "overlay";
+  /* overflow: hidden; */
+}
+
+.overlapGrid > span {
+  grid-area: overlay;
+  margin: 0;
+}
+.overlapGrid > div {
+  grid-area: overlay;
+}
