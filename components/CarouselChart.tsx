@@ -18,27 +18,27 @@ const CarouselChart = () => {
   const [index,setIndex]=useState(0)
   const [index1,setIndex1]=useState(1)
 
-  const [transL,setTransL]=useState(false)
-  const [transR,setTransR]=useState(false)
+  const [transToL,setTransToL]=useState(false)
+  const [transToR,setTransToR]=useState(false)
 
   useEffect(()=>{
-    if(transR){
+    if(transToR){
       setTimeout(()=>{
-        setTransR(false)
+        setTransToR(false)
       },800)
     }
-    if(transL){
+    if(transToL){
       setTimeout(()=>{
-        setTransL(false)
+        setTransToL(false)
         setIndex((index+1)%images.length)
         setIndex1((index1+1)%images.length)
       },800)
     }
-  },[transL,transR])
+  },[transToL,transToR])
 
   const handlePrev=()=>{
-    setTransR(true)
-    setTransL(false)
+    setTransToR(true)
+    setTransToL(false)
     
     const nextIndex=index - 1;
     const nextIndex1 = index1 -1;
@@ -57,8 +57,8 @@ const CarouselChart = () => {
   }
 
   const handleNext=()=>{
-    setTransL(true)
-    setTransR(false)
+    setTransToL(true)
+    setTransToR(false)
   } 
 
 
@@ -66,25 +66,46 @@ const CarouselChart = () => {
   //슬라이드 원리는 현재,다음 이미지 2개를 연달아 붙여서 현재 이미지는 0->-100%,
   //다음 이미지는 100% -> 0 보여주는 것이다. 이를 잘 생각해보자. 
   return (
-    <div className='flex justify-center space-x-5 mt-16'>
+    <>
+    <div className='flex justify-center space-x-4 mt-16'>
       <button className='h-auto w-10 bg-red-300 font-extrabold text-3xl' onClick={handlePrev}>{'<'}</button>
-        <div className='relative w-96 border-2 h-56 overflow-hidden rounded-xl'>
+        <div className='relative flex w-96 border-2 h-58 overflow-hidden rounded-xl'>
+          {/* 현재 이미지 */}
           <Image 
-            className={ `absolute object-contain z-20 w-full h-full p-1 
-            ${ transL ? 'transition duration-500 ease-linear transform -translate-x-full' :
-              (transR ? 'animate-slideR' : '')}`}
+            className={ `absolute object-contain overflow-visible z-20 w-full h-full 
+              ${ transToL ? 'transition duration-500 ease-linear transform -translate-x-full' :
+              (transToR ? 'animate-slideFromL' : '')}`}
             src={images[index]} 
             alt=""
           />  
+          {/* 이전 or 이후 이미지 */}
           <Image 
-            className={`absolute object-contain z-0 w-full h-full p-1
-            ${transL ? 'animate-slideR' : (transR ? 'transition duration-500 ease-linear transform translate-x-full': '')}`} 
+            className={`absolute object-contain overflow-visible z-0 w-full h-full
+            ${transToL ? 'animate-slideFromR' : 
+            (transToR ? 'transition duration-500 ease-linear transform translate-x-full': '')}`} 
             src={images[index1]} 
             alt=""
           />  
         </div>
       <button className='h-100 w-10 bg-red-300 font-extrabold text-3xl' onClick={handleNext}>{'>'}</button>
     </div>
+    {/* <Image  
+      className={ `absolute object-contain z-20 w-full h-full  
+      ${ transToL ? 'transition duration-500 ease-linear transform -translate-y-full' :
+        (transToR ? 'animate-slideR' : '')}`}
+      src={images[index]} 
+      alt=""
+    />  
+    {/* 다음 이미지 */}
+    {/*
+    <Image 
+      className={`absolute object-contain z-0 w-full h-full m-1
+      ${transToL ? 'transition duration-500 ease-linear transform -translate-y-full' : 
+      (transToR ? 'animate-slideL': '')}`} 
+      src={images[index1]} 
+      alt=""
+    />   */}
+    </>
   );
 };
 
