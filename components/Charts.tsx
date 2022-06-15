@@ -52,7 +52,7 @@ const ToggleBtn=styled.button<btnProps>`
     background-color: #92929223;
   }
 
-  border-bottom: ${props=> props.chartIdx===props.activatedIdx ? '2px solid blue' :'' };
+  border-bottom: ${props=> props.chartIdx===props.activatedIdx ? '2.5px solid #5792ff' :'' };
 `
 const ToggleBtnWrapper=styled.div`
   width: 100%;

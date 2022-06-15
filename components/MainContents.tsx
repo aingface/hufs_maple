@@ -5,9 +5,8 @@ import styled from 'styled-components';
 import mushmom from '/public/images/mushmom.png'
 import lucid from '/public/images/lucid.png'
 import crew from '/public/images/crew.png'
-import maple_island from '/public/images/maple_island.jpeg'
 import Layout from 'components/Layout';
-
+import BackgroundImg from 'components/BackgroundImg'
 
 interface TitleProps{
   positionY:number;
@@ -91,18 +90,7 @@ const MainContents = () => {
   return (
     <Layout>
       <MainContentsWrapper>
-        <BgImgWrapper>
-          <Image
-            src={maple_island}
-            alt='background: maple_island.jpeg'
-            width='100vw'
-            height='100vh'
-            layout='fill'
-            objectFit='cover'
-            objectPosition='center'
-            priority= {true}
-          />
-        </BgImgWrapper>  
+        <BackgroundImg imgUrl={'/images/maple_island.jpeg'}/>
         <MainTitle positionY={position} innerWidth={innerWidth}>
           HUFS 그리고 메이플<br /> 
           외메동에서 더 즐겁게
@@ -135,12 +123,6 @@ const SecondaryDesc=styled.p<DescProps>`
     font-size: ${props=>props.innerWidth > 800 ? '2.2vh' : '2vh'};
     color: #5684fa;
   }
-`
-const BgImgWrapper=styled.div`
-  z-index: 0;
-  position: absolute;
-  width: 100vw;
-  height: 100vh;
 `
 
 const DescItem=styled.div<DescProps>`
