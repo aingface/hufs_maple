@@ -6,7 +6,7 @@ import reverse_city from '/public/images/reverse_city.jpeg'
 import {useState,useEffect } from 'react';
 import useScrollCount from 'util/hooks/useScrollCount'
 import {AVG_ITEMS} from 'public/data/AVGItems'
-import CarouselChart from 'components/CarouselChart'
+import Charts from 'components/Charts'
 
 
 interface Props{
@@ -72,7 +72,7 @@ const info = () => {
               {AVGItemList}
             </AVGCardsWrapper>
           </AVGListWrapper>    
-          <CarouselChart/>
+          <Charts/>
         </ContentsWrapper>
       </Layout>  
   );
@@ -133,10 +133,10 @@ const AVGListWrapper=styled.div`
 `
 
 const BgImgWrapper=styled.div`
+  z-index: 0;
+  position: absolute;
   width: 100vw;
   height: 100vh;
-  position: absolute;
-  z-index: 0;
 `
 
 const ContentsWrapper=styled.div`

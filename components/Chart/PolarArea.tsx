@@ -3,6 +3,7 @@ import dynamic from 'next/dynamic'
 const ApexChart = dynamic(() => import("react-apexcharts"), { ssr: false });
 import {PolarData} from 'public/data/ChartData'
 import styled from 'styled-components';
+import { redirect } from 'next/dist/server/api-utils';
 
 const PolarArea = () => {
   return (
@@ -12,10 +13,9 @@ const PolarArea = () => {
         options={PolarData.options}
         series={PolarData.series}
         type="polarArea" 
-        width="500"
-        // height='500'
         style={{
-          // backgroundColor:'red'
+          // border:'1px solid red',
+          width:'90%',
         }}
       />
       <p className='chart-description'>모두 67명이 외메동과 함께 메이플을 즐기고 있어요</p>
@@ -39,12 +39,22 @@ const ChartWrapper=styled.div`
   .chart-title{
     font-size: 3vw;
     font-family: Maplestory_OTF_Light;
-    margin: 0 0 5vh 0;
+    margin: 5vh 0;
   }
   p{
     font-size: 1.5vw;
     font-weight: bold;
   }
-  background-color: #f9f7f6;
-  /* border: 2px solid red; */
+
+  @keyframes chart-ani{
+    0%{
+      opacity: 0;
+      transform: translateY(3vh);
+    }
+    100%{
+      transform: translateY(0);
+    }
+  }
+  animation: chart-ani 0.4s linear;
+  /* background-color: #f9f7f6; */
 `

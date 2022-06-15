@@ -15,6 +15,8 @@ export const PolarData :PolarDataProps = {
   series: [29,38],
   options: {
     chart: {
+      width: '100%',
+      // height: '100%',
       type: 'polarArea',
     },
     stroke: {
@@ -73,7 +75,7 @@ export const ColumnBarData:BarDataProps={
   options: {
     chart: {
       type: 'bar',
-      height: 350,
+      width: '100%',
       toolbar:{
         show:false
       },
@@ -90,6 +92,7 @@ export const ColumnBarData:BarDataProps={
 
       },  
     },
+    labels: ['루나','엘리시움','스카니아','크로아','베라','오로라','이노시스','리부트2','test' ],
     dataLabels: {
       enabled: false
     },
@@ -100,7 +103,7 @@ export const ColumnBarData:BarDataProps={
       categories: ['루나','엘리시움','스카니아','크로아','베라','오로라','이노시스','리부트2',['아케인','노바','리부트1','레드','제니스'] ],
       labels: {
         style: {
-          fontSize: '9px'
+          fontSize: '10px'
         }
       }
     },
@@ -117,7 +120,8 @@ export const BarData :BarDataProps = {
   options: {
     chart: {
       type: 'bar',
-      height: 350,
+      width: '100%',
+      // height: '100%',
       toolbar:{
         show:false
       },

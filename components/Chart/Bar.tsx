@@ -12,8 +12,10 @@ const Bar= () => {
         options={BarData.options}
         series={BarData.series}
         type="bar" 
-        width='500'
-        height='500'
+        style={{
+          // border:'1px solid red',
+          width:'90%',
+        }}
       />
       <p className='chart-description'>에스페라 ~ 리멘 사이 유저가 가장 많아요</p>
     </ChartWrapper>
@@ -29,19 +31,30 @@ const ChartWrapper=styled.div`
   /* margin-top: 12vh; */
   .chart-description{
     font-family: NEXON_Lv2_Gothic_OTF;
-    margin-top: 3vh;
+    margin: 5vh 0 0 0;
   }
   .chart-title{
     font-size: 3vw;
     font-family: Maplestory_OTF_Light;
-    /* margin: 5vh 0; */
+    margin: 5vh 0;
   }
   p{
     font-size: 1.5vw;
     font-weight: bold;
   }
 
-  background-color: #f6f7f9;
+  @keyframes chart-ani{
+    0%{
+      opacity: 0;
+      transform: translateY(3vh);
+    }
+    100%{
+      transform: translateY(0);
+    }
+  }
+
+  animation: chart-ani 0.4s linear;
+  /* background-color: #f9f7f6; */
   /* border: 2px solid green; */
 `
 

@@ -13,8 +13,10 @@ const ColumnBar = () => {
         options={ColumnBarData.options} 
         series={ColumnBarData.series} 
         type="bar"
-        width='500'
-        height='500'
+        style={{
+          // border:'1px solid red',
+          width:'90%',
+        }}
       />
       <p className='chart-description'>많은 분들이 도시서버에서 플레이를 하고 있어요</p>
     </ChartWrapper>
@@ -29,20 +31,31 @@ const ChartWrapper=styled.div`
   align-items: center;
   flex-direction: column;
   width: 100%;
-  height: 30vh;
+  /* margin-top: 12vh; */
   .chart-description{
     font-family: NEXON_Lv2_Gothic_OTF;
-    margin-top: 2vh;
+    margin: 5vh 0 0 0;
   }
   .chart-title{
     font-size: 3vw;
     font-family: Maplestory_OTF_Light;
-    /* margin: 5vh 0; */
+    margin: 5vh 0;
   }
   p{
     font-size: 1.5vw;
     font-weight: bold;
   }
-  background-color: #f6f7f9;
+
+  @keyframes chart-ani{
+    0%{
+      opacity: 0;
+      transform: translateY(3vh);
+    }
+    100%{
+      transform: translateY(0);
+    }
+  }
+  animation: chart-ani 0.4s linear;
+  /* background-color: #f9f7f6; */
   /* border: 2px solid blue; */
 `
