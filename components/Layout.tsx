@@ -8,7 +8,9 @@ type layoutProps={
 
 const Layout = ({children}:layoutProps ) => {
   return (
-    <>
+    <div
+    style={{backgroundColor:'#f6f7f9', zIndex:'-9999'}}
+    >
       <Head>
         <title>한국외대 메이플스토리 동아리</title>
         <meta name="description" content="Hufs Maplestory club" />
@@ -17,7 +19,7 @@ const Layout = ({children}:layoutProps ) => {
       <Header/>
         {children}
       <Footer/>
-    </>
+    </div>
   );
 
 }

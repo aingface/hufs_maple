@@ -21,7 +21,7 @@ export const PolarData :PolarDataProps = {
       show:false,
     },
     fill: {
-      opacity: 0.9
+      opacity: 1
     },
     legend:{
       position: "left",
@@ -63,7 +63,6 @@ export const PolarData :PolarDataProps = {
       }
     },
     colors: ['#7D02EB', '#00B1F2'],
-
   },
 }
 

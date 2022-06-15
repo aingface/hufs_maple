@@ -12,8 +12,8 @@ const PolarArea = () => {
         options={PolarData.options}
         series={PolarData.series}
         type="polarArea" 
-        width="350"
-        // height='100%'
+        width="500"
+        // height='500'
         style={{
           // backgroundColor:'red'
         }}
@@ -30,22 +30,21 @@ const ChartWrapper=styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  width: 40vw;
-  margin-top: 12vh;
+  width: 100%;
+  /* margin-top: 12vh; */
   .chart-description{
     font-family: NEXON_Lv2_Gothic_OTF;
-    margin: 5vh 0;
+    margin: 5vh 0 0 0;
   }
   .chart-title{
     font-size: 3vw;
     font-family: Maplestory_OTF_Light;
-    margin: 5vh 0;
+    margin: 0 0 5vh 0;
   }
   p{
     font-size: 1.5vw;
     font-weight: bold;
   }
-  border-radius: 5px;
-  
-  /* background-color: aqua; */
+  background-color: #f9f7f6;
+  /* border: 2px solid red; */
 `

@@ -6,17 +6,17 @@ module.exports = {
   theme: {
     extend: {
       animation: {
-        slideFromL: "slideFromL 500ms linear",
-        slideFromR: "slideFromR 500ms linear",
+        slideToR: "slideToR 500ms linear",
+        slideToL: "slideToL 500ms linear",
       },
       keyframes: {
         //프레임 밖 왼쪽에서 현위치로
-        slideFromL: {
+        slideToR: {
           "0%": { transform: "translateX(-100%)" },
           "100%": { transform: "translateX(0)" },
         },
         //프레임 밖 오른쪽으로에서 현 위치로
-        slideFromR: {
+        slideToL: {
           "0%": { transform: "translateX(100%)" },
           "100%": { transform: "translateX(0)" },
         },

@@ -15,7 +15,6 @@ const NavBar = () => {
               width= '56vw'
               height='40vh'
               objectFit='cover'
-              style={{margin:'0'}}
             />
             <p>외메동</p>
           </a> 
@@ -59,7 +58,6 @@ const MenuItem=styled.div`
 const LogoItem=styled.div`
   font-family: NEXON_Lv2_Gothic_OTF;
   cursor: pointer;
-  /* position: absolute; */
   width: 20vw;
   height: 100%;
   left: 1vw;

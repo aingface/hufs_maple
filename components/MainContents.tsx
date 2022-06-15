@@ -1,7 +1,7 @@
 import React, {useState,useEffect} from 'react';
 import Image, { StaticImageData } from 'next/image'
 import Link from 'next/link';
-import styled, { keyframes } from 'styled-components';
+import styled from 'styled-components';
 import mushmom from '/public/images/mushmom.png'
 import lucid from '/public/images/lucid.png'
 import crew from '/public/images/crew.png'
@@ -62,9 +62,9 @@ const MainContents = () => {
     }
   },[])
 
-  const descriptionsTags=descriptions.map(desc=>{
+  const descriptionsTags=descriptions.map((desc,idx)=>{
     return(
-      <DescItem positionY={position} innerWidth={innerWidth}>
+      <DescItem key={desc.title+idx} positionY={position} innerWidth={innerWidth}>
         <SecondaryDesc positionY={position} innerWidth={innerWidth}>
           <span className='sub_title'>{desc.title}</span>
           <br />
@@ -101,9 +101,6 @@ const MainContents = () => {
             objectFit='cover'
             objectPosition='center'
             priority= {true}
-            style={{
-              zIndex:-1, 
-            }}
           />
         </BgImgWrapper>  
         <MainTitle positionY={position} innerWidth={innerWidth}>
@@ -140,9 +137,10 @@ const SecondaryDesc=styled.p<DescProps>`
   }
 `
 const BgImgWrapper=styled.div`
+  z-index: 0;
+  position: absolute;
   width: 100vw;
   height: 100vh;
-  position: absolute;
 `
 
 const DescItem=styled.div<DescProps>`

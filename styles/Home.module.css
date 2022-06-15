@@ -109,7 +109,10 @@
 }
 
 
-
+.background {
+  position: relative;
+  min-height: 350px;
+}
 
 @media (max-width: 600px) {
   .grid {

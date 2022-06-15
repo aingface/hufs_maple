@@ -5,9 +5,6 @@ import Image from 'next/image';
 import reverse_city from '/public/images/reverse_city.jpeg'
 import {useState,useEffect } from 'react';
 import useScrollCount from 'util/hooks/useScrollCount'
-import PolarArea from 'components/Chart/PolarArea'
-import Bar from 'components/Chart/Bar'
-import ColumnBar from 'components/Chart/ColumnBar';
 import {AVG_ITEMS} from 'public/data/AVGItems'
 import CarouselChart from 'components/CarouselChart'
 
@@ -55,22 +52,16 @@ const info = () => {
   ))  
   
   return (
-    <>
       <Layout>
         <ContentsWrapper >
           <BgImgWrapper>
             <Image
               src={reverse_city}
               alt={`background:${reverse_city}.jpeg`}
-              width='100vw'
-              height='100vh'
               layout='fill'
               objectFit='cover'
               objectPosition='center'
               priority= {true}
-              style={{
-                zIndex:-1, 
-              }}
             />
           </BgImgWrapper>
           <AVGListWrapper>    
@@ -81,30 +72,13 @@ const info = () => {
               {AVGItemList}
             </AVGCardsWrapper>
           </AVGListWrapper>    
-          <ChartWrapper positionY={position} innerWidth={innerWidth}>
-            <PolarArea/>
-            <ColumnBar/>
-            <Bar/>
-          </ChartWrapper>
+          <CarouselChart/>
         </ContentsWrapper>
-        <CarouselChart/>
       </Layout>  
-    </>
   );
 };
 
 export default info;
-
-const ChartWrapper=styled.div<Props>`
-  display: flex;
-  flex-direction: ${props=>props.innerWidth> 400 ? 'row' : 'column' };
-  /* justify-content: center; */
-  align-items: start;
-  width: 80vw;
-  height: 300vh;
-  flex-wrap: no-wrap;
-  /* background-color: beige; */
-`
 
 const AVGCard=styled.div<Props>`
   display: flex;
@@ -138,6 +112,7 @@ const AVGListTitle=styled.p<Props>`
 
 `
 const AVGCardsWrapper=styled.div<Props>`
+  z-index: 1;
   display: flex;
   flex-direction: ${props=>props.innerWidth> 400 ? 'row' : 'column' };
   justify-content: center;
@@ -161,19 +136,17 @@ const BgImgWrapper=styled.div`
   width: 100vw;
   height: 100vh;
   position: absolute;
+  z-index: 0;
 `
 
 const ContentsWrapper=styled.div`
-  z-index: -1;
   position: relative;
-  height: 210vh;
+  height: 200vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   font-family: Maplestory_OTF_Light;
-  background:linear-gradient( #f6f7f9ce);
   min-width: 350px;
   width: 100vw;
-
   /* background:linear-gradient( #60f4fffc, 15%,#862cbaf9 25%, #f6f7f9ce 5%); */
 `
