@@ -4,10 +4,6 @@ import PolarArea from 'components/Chart/PolarArea'
 import Bar from 'components/Chart/Bar'
 import ColumnBar from 'components/Chart/ColumnBar';
 
-import Tabs from '@mui/material/Tabs';
-import Tab from '@mui/material/Tab';
-import Typography from '@mui/material/Typography';
-import Box from '@mui/material/Box';
 
 interface Props{
   positionY:number;
@@ -27,13 +23,15 @@ const Charts = () => {
   const handleOnClickBtn=(event:React.MouseEvent,btnNum:number)=>{
     setActivatedIdx(btnNum)
   }  
+  const tabTitle=['학생 수','서버 분포', '진출 지역']
+  const ToggleBtnList=tabTitle.map((item,idx)=>
+    <ToggleBtn onClick={event=>handleOnClickBtn(event,idx)} key={idx} activatedIdx={activatedIdx}  chartIdx={idx}>{item}</ToggleBtn>
+  )
 
   return (
     <ChartBoardWrapper>
       <ToggleBtnWrapper>
-        <ToggleBtn onClick={event=>handleOnClickBtn(event,0)} key={1} activatedIdx={activatedIdx}  chartIdx={0}>학생 수</ToggleBtn>
-        <ToggleBtn onClick={event=>handleOnClickBtn(event,1)} key={2} activatedIdx={activatedIdx} chartIdx={1}>서버 분포</ToggleBtn>
-        <ToggleBtn onClick={event=>handleOnClickBtn(event,2)} key={3} activatedIdx={activatedIdx} chartIdx={2}>진출 마을</ToggleBtn>
+        {ToggleBtnList}
       </ToggleBtnWrapper>
       <ChartWrapper>    
         {charts[activatedIdx]}
@@ -45,22 +43,26 @@ const Charts = () => {
 export default Charts;
 
 const ToggleBtn=styled.button<btnProps>`
-  width: 100%;
-  height: 2vh;
-   padding-bottom: 2vh;
+  width: 10%;
+  height: 5vh;
+  /* padding-bottom: 3vh; */
+  display :flex;
+  justify-content: center;
+  align-items: center;
   :hover{
     background-color: #92929223;
   }
-
+  
   border-bottom: ${props=> props.chartIdx===props.activatedIdx ? '2.5px solid #5792ff' :'' };
 `
 const ToggleBtnWrapper=styled.div`
-  width: 100%;
+  width: 100vw;
   height: 5vh;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
+  align-items: flex-end;
   flex-direction: row;
- 
+  border-bottom: 2px solid #92929223;
 `
 const ChartWrapper=styled.div`
   width  : 100%;

@@ -3,7 +3,7 @@ import React from 'react';
 import Footer from 'components/Footer';
 import Head from 'next/head'
 type layoutProps={
-  children:React.ReactNode;
+  children:React.ReactNode | JSX.Element;
 }
 
 const Layout = ({children}:layoutProps ) => {
@@ -24,3 +24,5 @@ const Layout = ({children}:layoutProps ) => {
 
 }
 export default Layout;
+
+// max-width: 1140px;

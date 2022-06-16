@@ -6,7 +6,7 @@ const Footer = () => {
   return (
     <>
       <FooterWrapper className='footer-wrapper'>
-        <Pstyle>Copyright@ 2022 aingface</Pstyle>
+        <p className='footer_text'>Copyright@ 2022 aingface</p>
       </FooterWrapper>
     </>
   );
@@ -26,9 +26,9 @@ const FooterWrapper=styled.footer`
   padding: 1rem;
   align-items: center;
   width: 100vw;
-`
-const Pstyle=styled.p`
-  font-size: 0.8rem;
-  opacity: 70%;
-  margin: auto;
+  .footer_text{
+    font-size: 0.8rem;
+    opacity: 70%;
+    margin: auto;
+  }
 `

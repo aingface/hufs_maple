@@ -7,42 +7,44 @@ import lucid from '/public/images/lucid.png'
 import crew from '/public/images/crew.png'
 import Layout from 'components/Layout';
 import BackgroundImg from 'components/BackgroundImg'
+import {requirements} from 'public/data/MainPageData'
+
 
 interface TitleProps{
   positionY:number;
   innerWidth:number;
 }
 
-interface DescProps{
+interface reqProps{
   positionY:number;
   innerWidth:number;
 }
 
-const descriptions:{
-  title:string,
-  description:(string|JSX.IntrinsicAttributes)[],
-  image:StaticImageData}[]=[
-  {
-    title:'가입자격',
-    description:['외대인이라면 누구나','가입할 수 있어요'],
-    image :crew,
-  },
-  {
-    title:'가입조건',
-    description:['레벨은 200이상', '이어야해요'],
-    image :mushmom,
-  },
-  {
-    title:'가입자격',
-    description:['오픈카톡으로 연락주세요',
-      <span>
-        <Link href={'https://open.kakao.com/me/hufsmaple'}>
-          엘리시움 외대경제 김규범
-        </Link>
-      </span>],
-    image :lucid,
-  },
-]
+// const requirements:{
+//   title:string,
+//   description:(string|JSX.IntrinsicAttributes)[],
+//   image:StaticImageData}[]=[
+//   {
+//     title:'가입대상',
+//     description:['외대인이라면 누구나','가입할 수 있어요'],
+//     image :crew,
+//   },
+//   {
+//     title:'가입레벨',
+//     description:['레벨은 200이상', '이어야해요'],
+//     image :mushmom,
+//   },
+//   {
+//     title:'가입연락',
+//     description:['오픈카톡으로 연락주세요',
+//       <span>
+//         <Link href={'https://open.kakao.com/me/hufsmaple'}>
+//           엘리시움 외대경제 김규범
+//         </Link>
+//       </span>],
+//     image :lucid,
+//   },
+// ]
 
 const MainContents = () => {
   const [position,setPosition]=useState(0);
@@ -60,29 +62,44 @@ const MainContents = () => {
       window.removeEventListener("scroll",onScroll);
     }
   },[])
-
-  const descriptionsTags=descriptions.map((desc,idx)=>{
+  
+  //메인페이지 하단 설명 개별 항목  
+  const requirementsList=requirements.map((req)=>{
     return(
-      <DescItem key={desc.title+idx} positionY={position} innerWidth={innerWidth}>
-        <SecondaryDesc positionY={position} innerWidth={innerWidth}>
-          <span className='sub_title'>{desc.title}</span>
+      <JoinReq key={req.title} positionY={position} innerWidth={innerWidth}>
+        <JoinReqText>
+          <span className='join_req_title'>{req.title}</span>
           <br />
-          {desc.description
-            .map(line=><>
-                  {line}<br/>
-                </>
-            
+          {req.description
+            .map((line,idx)=>{
+              if(line==='엘리시움 외대경제 김규범'){
+                return(
+                  <span  key={Date.now()} className='openkatok'>
+                    <Link href={'https://open.kakao.com/me/hufsmaple'}>
+                      {'엘리시움 외대경제 김규범'}
+                    </Link>
+                  </span>
+                )
+              }
+              return(
+                <span  key={Date.now()+Math.random()}>
+                  <>
+                    {line}<br/>
+                  </>
+                </span>
+              ) 
+            }
           )}
-        </SecondaryDesc>
+        </JoinReqText>
         <Image
-          src={desc.image}
-          alt={`background:${desc.image}.png`}
+          src={req.image}
+          alt={`background:${req.image}.png`}
           width="75%"
           height="75%"
           objectFit='cover'
         >
         </Image>
-      </DescItem>
+      </JoinReq>
     )
   })
 
@@ -100,9 +117,9 @@ const MainContents = () => {
           가입하기
           </Link>
         </JoinButton>
-        <DescWrapper>
-          { descriptionsTags}
-        </DescWrapper>  
+        <JoinReqWrapper>
+          {requirementsList}
+        </JoinReqWrapper>  
       </MainContentsWrapper>
     </Layout>
   );
@@ -111,36 +128,37 @@ const MainContents = () => {
 export default MainContents;
 
 
-
-const SecondaryDesc=styled.p<DescProps>`
+//메인페이지 하단 가입조건 텍스트
+const JoinReqText=styled.div`
   z-index: 1;
   padding: 1% 5%;
-  color: #000000;
   line-height: 4vh;
   font-family: NEXON_Lv2_Gothic_OTF;
-  font-size: ${props=>props.innerWidth > 800 ? '3.5vh' : '1.9vh'};
-  .sub_title{
-    font-size: ${props=>props.innerWidth > 800 ? '2.2vh' : '2vh'};
+  font-size: clamp(0.7rem,3.5vw,1.5rem);
+
+  .join_req_title{
+    font-size: clamp(0.7rem,2vw,1rem);
     color: #5684fa;
   }
 `
 
-const DescItem=styled.div<DescProps>`
+//메인페이지 하단 가입 조건 개별 항목  
+const JoinReq=styled.div<reqProps>`
   position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: ${props=>props.innerWidth > 800 ? '40vw' : '80vw'};
+  width: ${props=>props.innerWidth > 800 ? '35vw' : '90vw'};
   padding: 1vh 3vh;
   margin: 3vh 0;
-  @keyframes desc-ani{
+  @keyframes req-ani{
     0%{
       opacity: 0;
       transform: translateY(3vh);}
     100%{transform: translateY(0);}
   }
-  animation: ${props=>props.positionY >400 && 'desc-ani 0.6s linear'};
-  span:hover{
+  animation: ${props=>props.positionY >400 && 'req-ani 0.6s linear'};
+  .openkatok:hover{
     color : #1154ff;
     cursor: pointer;
   }
@@ -148,7 +166,8 @@ const DescItem=styled.div<DescProps>`
   /* background-color: #ff7b00; */
 `
 
-const DescWrapper=styled.div`
+//메인페이지 하단 가입 조건 항목 전체 wrapper 
+const JoinReqWrapper=styled.div`
   display: flex;
   flex-direction: column;
   margin: 25vh;
@@ -159,18 +178,18 @@ const DescWrapper=styled.div`
   
 `
 
-const JoinButton=styled.div<DescProps>`
+const JoinButton=styled.div<reqProps>`
   margin: 20vh 0 25vh 0;
   padding: 1% 3%;
   font-family: NEXON_Lv2_Gothic_OTF;
   z-index: 3;
   cursor: pointer;
-  width:${props=>props.innerWidth > 800 ? '20vh' : '25vh'};
+  width: clamp(8rem,30vw,12rem);
   height: 7vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 1.2rem;
+  font-size: clamp(1rem,1vw,2rem);
 `
 
 const MainTitle=styled.p<TitleProps>`
@@ -181,7 +200,7 @@ const MainTitle=styled.p<TitleProps>`
   margin: 15vh 0;
   width: 100vw;
   /* height: 100vh; */
-  font-size: ${props=>props.innerWidth > 800 ? '6vh' : '4vh'};
+  font-size: clamp(1.5rem,8vw,3rem); 
   font-weight: bold;
 
   /* background-color: red; */
