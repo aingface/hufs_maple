@@ -6,7 +6,7 @@ import styled from 'styled-components';
 import { redirect } from 'next/dist/server/api-utils';
 
 const PolarArea = () => {
-  return (
+  return (    
     <ChartWrapper>
       <p className='chart-title'>캠퍼스 별 학생 수</p>
       <ApexChart 
@@ -15,7 +15,7 @@ const PolarArea = () => {
         type="polarArea" 
         style={{
           // border:'1px solid red',
-          width:'90%',
+          width: '90%',
         }}
       />
       <p className='chart-description'>모두 67명이 외메동과 함께 메이플을 즐기고 있어요</p>

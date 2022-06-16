@@ -33,5 +33,4 @@ const ContentsWrapper=styled.div`
   font-family: Maplestory_OTF_Light;
   min-width: 350px;
   width: 100vw;
-  /* background:linear-gradient( #60f4fffc, 15%,#862cbaf9 25%, #f6f7f9ce 5%); */
 `

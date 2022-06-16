@@ -9,7 +9,7 @@ type layoutProps={
 const Layout = ({children}:layoutProps ) => {
   return (
     <div
-    style={{backgroundColor:'#f6f7f9', zIndex:'-9999'}}
+    style={{backgroundColor:'#f6f7f9'}}
     >
       <Head>
         <title>한국외대 메이플스토리 동아리</title>

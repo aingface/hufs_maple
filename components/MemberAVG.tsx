@@ -7,11 +7,13 @@ import useScrollCount from 'util/hooks/useScrollCount'
 interface Props{
   positionY:number;
   innerWidth:number;
+  innerHeight:number;
 }
 
 function MemberAVG() {
   const [position,setPosition]=useState(0);
   const [innerWidth, setInnerWidth]=useState(0);
+  const [innerHeight, setInnerHeight]=useState(0);
 
   const onScroll=()=>{
     setPosition(window.scrollY);
@@ -21,6 +23,8 @@ function MemberAVG() {
   useEffect(()=>{
     window.addEventListener("scroll",onScroll);
     setInnerWidth(window.innerWidth);
+    setInnerHeight(window.innerHeight);
+
     // console.log(innerWidth)
     //메모리 누수 방지
 
@@ -30,7 +34,11 @@ function MemberAVG() {
   },[])
 
   const AVGItemList=AVG_ITEMS.map((item)=>(
-    <AVGCard key={item.title} positionY={position} innerWidth={innerWidth}>
+    <AVGCard key={item.title} 
+      positionY={position} 
+      innerWidth={innerWidth}
+      innerHeight={innerHeight}
+      >
       <Image
         src={item.src}
         alt={`background:${item.title}.png`}
@@ -40,7 +48,7 @@ function MemberAVG() {
         priority= {true} 
       />
       <p className='AVGListTitle'>{`${item.title}`}</p> 
-      <p className='AVGValue'{...useScrollCount(item.number)}>
+      <p className='AVGValue'{...useScrollCount(item.value)}>
         0
       </p>  
     </AVGCard>
@@ -48,10 +56,18 @@ function MemberAVG() {
 
   return (
     <AVGListWrapper>    
-      <AVGListTitle positionY={position} innerWidth={innerWidth}>
+      <AVGListTitle 
+        positionY={position} 
+        innerWidth={innerWidth}
+        innerHeight={innerHeight}
+        >
           외메동 평균은
       </AVGListTitle>
-      <AVGCardsWrapper positionY={position} innerWidth={innerWidth}>
+      <AVGCardsWrapper 
+        positionY={position} 
+        innerWidth={innerWidth}
+        innerHeight={innerHeight}
+      >
         {AVGItemList}
       </AVGCardsWrapper>
     </AVGListWrapper>    
@@ -65,18 +81,18 @@ const AVGCard=styled.div<Props>`
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  margin: ${props=>props.innerWidth > 400 ? '2vh 3vw;' : '2vh 2vw;'};
-  width: ${props=>props.innerWidth > 400 ? '17vw' : '50vw'};
-  height: ${props=>props.innerWidth > 820 ? '40vh' : '22vh'};
-  /* padding: ${props=>props.innerWidth > 400 ? '0 7vh;' : '2vh 5vh;'}; */
+  margin:${ props=>props.innerWidth*1.5 <= props.innerHeight ?  '2vh 0' : '0 2vw'};
+  width: ${ props=>props.innerWidth*1.5 <= props.innerHeight ?  '45vw' : '17vw'};
+  height: ${ props=>props.innerWidth*1.5 <= props.innerHeight ? '22vh' : '40vh'};
+  padding: ${ props=>props.innerWidth*1.5 <= props.innerHeight ? '0 7vh;' : '2vh 5vh;'}; 
 
   .AVGListTitle{
-    font-size: ${props=>props.innerWidth > 400 ? '1.5vw' : '2.5vw'};
+    font-size: ${ props=>props.innerWidth*1.5 <= props.innerHeight ? '2.5vw' : '1.5vw' };
     color:#000000e8;
     margin-top: 2vh;
   }
   .AVGValue{
-    font-size: ${props=>props.innerWidth > 400 ? '5vw' : '7vw'};
+    font-size: ${ props=>props.innerWidth*1.5 <= props.innerHeight ? '7vw' : '5vw'};
     color:#000000;
     font-weight: bold;
   }
@@ -86,7 +102,8 @@ const AVGCard=styled.div<Props>`
 `
 
 const AVGListTitle=styled.p<Props>`  
-  font-size: ${props=>props.innerWidth > 400 ? '3vw' : '8vw'};
+  z-index: 10;
+  font-size: ${ props=>props.innerWidth*1.5 <= props.innerHeight ? '8vw' : '3vw' };
   margin: 7vh;
   color: #ffffff;
 
@@ -94,14 +111,14 @@ const AVGListTitle=styled.p<Props>`
 const AVGCardsWrapper=styled.div<Props>`
   z-index: 1;
   display: flex;
-  flex-direction: ${props=>props.innerWidth> 400 ? 'row' : 'column' };
+  flex-direction: ${props=>props.innerWidth*1.5 <= props.innerHeight ? 'column' : 'row' };
   justify-content: center;
   align-items: center;
-  width: ${props=>props.innerWidth > 400 ? '80vw' : '90vw'};
+  width: 90vw;
   font-family: Maplestory_OTF_Light;
-  margin: ${props=>props.innerWidth> 400 ? '10vh 0 24.5vh 0' : '0vh' };
+  margin: ${ props=>props.innerWidth*1.5 <= props.innerHeight ? '0vh': '10vh 0 24.5vh 0' };
   
-  /* background-color: #00eeffa1; */
+  // background-color: #00eeffa1; 
 `
 
 const AVGListWrapper=styled.div`

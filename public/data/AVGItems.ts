@@ -6,16 +6,16 @@ export const AVG_ITEMS=[
   {
     title:'레벨',
     src:level,
-    number:252,
+    value:252,
   },
   {
     title:'유니온',
     src:union,
-    number:5884,
+    value:5884,
   },
   {
     title:'학번',
     src:ammonite,
-    number:18,
+    value:18,
   },
 ]
