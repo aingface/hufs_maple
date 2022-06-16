@@ -92,7 +92,6 @@ export const ColumnBarData:BarDataProps={
 
       },  
     },
-    labels: ['루나','엘리시움','스카니아','크로아','베라','오로라','이노시스','리부트2','test' ],
     dataLabels: {
       enabled: false
     },
