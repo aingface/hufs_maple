@@ -26,11 +26,22 @@ const NavBar = () => {
               정보
             </Link>
           </MenuItem>
-        <MenuItem>
-          <Link href={'https://www.instagram.com/hufs_maple/'}>
-            소식
-          </Link>
-        </MenuItem>
+        <DropdownContainer>
+          <input id='dropdown' type="checkbox" />
+          <label className='dropdownLabel' htmlFor='dropdown'>
+            <div>소식</div>
+          </label>
+          
+          <div className='dropdown-menu'>
+            <ul>
+              <li className='dropdown-list'>
+                  <Link href={'https://www.instagram.com/hufs_maple/'}>
+                    instagram
+                  </Link>
+              </li>  
+            </ul>    
+          </div>
+        </DropdownContainer>
       </MenuList>
     </NavWrapper>
   );
@@ -38,12 +49,76 @@ const NavBar = () => {
 
 export default NavBar;
 
-//상단 네비게이션 바 최상위
-const NavWrapper=styled.nav`
-  display: flex;
-  width: 100vw;
-  justify-content: center;
+//메뉴 상단에 소식을 누르면 드롭다운 메뉴가 나옴
+const DropdownContainer=styled.div`
+  width: clamp(4rem,12vw,6rem);
+  font-size: clamp(0.7rem,2vw,1.1rem);
+  margin: 0 clamp(0.1rem,1vw,1.1rem);
   position: relative;
+
+  .dropdown-list{
+    color:white;
+    display:flex;
+    justify-content:center;
+  }
+  /* +는 바로 옆 요소 */
+  #dropdown:checked + label + div {
+    display: block;
+    border-top: 1px solid #00000026;
+
+    
+    @keyframes dropdown {
+      0%{
+        opacity: 0;
+        transformY(50%);
+      }
+      100%{
+        transformY(100%);
+      }
+    }
+    animation : dropdown 0.4s linear;
+  }
+  .dropdown-menu {
+    display: none;
+    position: absolute;
+    width: 100%;
+    left: 0;
+    background: white;
+    box-shadow: 0 4px 5px 0 #00000026;
+    background-color: transparent;
+  }
+  .dropdownLabel {
+    display: flex;
+    justify-content: center;
+  }
+  #dropdown{
+    position:absolute;
+    visibility:hidden;
+  }
+
+  :hover{
+    background-color: #a7a7a84D;
+    box-shadow: 0 4px 5px 0 #00000026;
+    border-radius:3px;
+  }
+`
+
+//상단 네비게이션 바 메뉴 개별 항목 == 정보 
+const MenuItem=styled.div`
+  display: flex;
+  justify-content: center;
+  align-items:center;
+  cursor: pointer;
+  width: clamp(4rem,12vw,6rem);
+  font-size: clamp(0.7rem,2vw,1.1rem);
+  margin: 0 clamp(0.1rem,1vw,1.1rem);
+  
+  
+  :hover{
+    background-color: #a7a7a84D;
+    border-radius:3px;
+    box-shadow: 0 4px 5px 0 #00000026;
+  }
 `
 
 //상단 네비게이션 바 메뉴 전체
@@ -56,22 +131,6 @@ const MenuList=styled.ul`
   justify-content: flex-end;
   
   /* background-color: #187e15; */
-`
-//상단 네비게이션 바 메뉴 개별 항목
-const MenuItem=styled.div`
-  display: flex;
-  justify-content: center;
-  cursor: pointer;
-  width: clamp(3rem,15vw,3.5rem);
-
-  font-size: clamp(0.7rem,2vw,1.1rem);
-  margin: 0 clamp(0.1rem,1vw,1.1rem);
-
-
-  :hover{
-    background-color: #a7a7a84D;
-    border-radius:3px;
-  }
 `
 
 //홈페이지로 텍스트+로고 이미지
@@ -91,8 +150,14 @@ const LogoItem=styled.div`
     p{
       margin-right: clamp(0.1rem,0.1vw,0.2rem);
       width: clamp(3rem,50vw,4rem);
-      /* background-color: blue; */
     }
   }
   /* background-color: #569d23; */
+`
+//상단 네비게이션 바 최상위
+const NavWrapper=styled.nav`
+  display: flex;
+  width: 100vw;
+  justify-content: center;
+  position: relative;
 `

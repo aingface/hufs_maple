@@ -46,7 +46,9 @@ const HeaderWrapper=styled.div<Props>`
   display: flex;
   justify-content: center;
   width:100%;
-  height: clamp(2rem,7vh,3rem);
+  // height: clamp(2rem,7vh,3rem);
+  height: 10vh;
+
   color: ${props=>props.positionY>props.innerHeight-30? '#000000' : '#FFFFFF' };
   background-color:${props=>props.positionY>props.innerHeight-30 && '#02020210' };
   font-family: NEXON_Lv2_Gothic_OTF_Light;

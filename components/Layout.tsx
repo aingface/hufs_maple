@@ -1,16 +1,16 @@
 import Header from 'components/Header';
 import React from 'react';
 import Footer from 'components/Footer';
-import Head from 'next/head'
+import Head from 'next/head';
+import styled from 'styled-components';
+
 type layoutProps={
   children:React.ReactNode | JSX.Element;
 }
 
 const Layout = ({children}:layoutProps ) => {
   return (
-    <div
-    style={{backgroundColor:'#f6f7f9'}}
-    >
+    <LayoutWrapper>
       <Head>
         <title>한국외대 메이플스토리 동아리</title>
         <meta name="description" content="Hufs Maplestory club" />
@@ -19,10 +19,16 @@ const Layout = ({children}:layoutProps ) => {
       <Header/>
         {children}
       <Footer/>
-    </div>
+    </LayoutWrapper>
   );
 
 }
 export default Layout;
 
-// max-width: 1140px;
+const LayoutWrapper=styled.div`
+  width:100vw;
+  backgroundColor:'#f6f7f9';
+  
+  max-width:1140px;
+  min-width:280px;
+`
