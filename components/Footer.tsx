@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components'
-
-
+import Image from 'next/image';
+import instagram1 from '/public/images/instagram1.png'
 const Footer = () => {
   return (
     <>
@@ -15,20 +15,20 @@ const Footer = () => {
 export default Footer;
 
 const FooterWrapper=styled.footer`
-  z-index: 999;
-  font-family: Maplestory_OTF_Light;
+  z-index: 10;
   display: flex;
+  align-items: center;
+  justify-content:center;
+  flex-direction:column;
+  width: 100vw;
   height: 10vh;
-  padding: 0 3rem;
+  margin: 0;
   background-color: #485055;
   color: white;
-  margin: 0;
-  padding: 1rem;
-  align-items: center;
-  width: 100vw;
-  .footer_text{
+  p{
     font-size: 0.8rem;
     opacity: 70%;
-    margin: auto;
+    margin: 0.2rem 0;
   }
+  font-family: Maplestory_OTF_Light;
 `

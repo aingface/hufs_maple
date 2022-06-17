@@ -21,8 +21,16 @@ const NavBar = () => {
         </Link>
       </LogoItem>
       <MenuList>
-        <MenuItem className='menu-item'><Link href={'/info'}>정보</Link></MenuItem>
-        <MenuItem><Link href={'/'}>소식</Link></MenuItem>
+        <MenuItem className='menu-item'>
+            <Link href={'/info'}>
+              정보
+            </Link>
+          </MenuItem>
+        <MenuItem>
+          <Link href={'https://www.instagram.com/hufs_maple/'}>
+            소식
+          </Link>
+        </MenuItem>
       </MenuList>
     </NavWrapper>
   );
@@ -38,7 +46,7 @@ const NavWrapper=styled.nav`
   position: relative;
 `
 
-//상단 네비게이션 바 전체
+//상단 네비게이션 바 메뉴 전체
 const MenuList=styled.ul`
   display: flex;
   list-style:none;
@@ -49,16 +57,21 @@ const MenuList=styled.ul`
   
   /* background-color: #187e15; */
 `
-//상단 네비게이션 바 항목
+//상단 네비게이션 바 메뉴 개별 항목
 const MenuItem=styled.div`
   display: flex;
   justify-content: center;
   cursor: pointer;
-  width: 2rem;
+  width: clamp(3rem,15vw,3.5rem);
+
   font-size: clamp(0.7rem,2vw,1.1rem);
   margin: 0 clamp(0.1rem,1vw,1.1rem);
 
-  /* background-color: yellowgreen; */
+
+  :hover{
+    background-color: #a7a7a84D;
+    border-radius:3px;
+  }
 `
 
 //홈페이지로 텍스트+로고 이미지

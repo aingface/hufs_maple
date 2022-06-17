@@ -16,6 +16,6 @@ export const AVG_ITEMS=[
   {
     title:'학번',
     src:ammonite,
-    value:18,
+    value: 18,
   },
 ]

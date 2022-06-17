@@ -79,7 +79,6 @@ const MainContents = () => {
 
 
   return (
-    <Layout>
       <MainContentsWrapper>
         <BackgroundImg imgUrl={'/images/maple_island.jpeg'}/>
         <MainTitle>
@@ -95,7 +94,6 @@ const MainContents = () => {
           {requirementsList}
         </JoinReqWrapper>  
       </MainContentsWrapper>
-    </Layout>
   );
 } ;
 
