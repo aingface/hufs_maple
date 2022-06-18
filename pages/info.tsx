@@ -5,11 +5,6 @@ import Charts from 'components/InfoPage/Charts'
 import MemberAVG from 'components/InfoPage/MemberAVG'
 import BackgroundImg from 'components/BackgroundImg'
 
-interface Props{
-  positionY:number;
-  innerWidth:number;
-}
-
 const info = () => {  
   return (
     <Layout>

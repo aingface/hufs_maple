@@ -31,7 +31,11 @@ const Header = () => {
 
   return (
     <>
-      <HeaderWrapper className='header-wrapper' positionY={position} innerHeight={innerHeight}>
+      <HeaderWrapper 
+        className='header-wrapper' 
+        positionY={position} 
+        innerHeight={innerHeight}
+      >
         <NavBar/>
       </HeaderWrapper>      
     </>

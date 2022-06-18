@@ -32,9 +32,9 @@ const NavBar = () => {
             <div>소식</div>
           </label>
           
-          <div className='dropdown-menu'>
+          <div className='dropdown-list'>
             <ul>
-              <li className='dropdown-list'>
+              <li className='dropdown-list-item'>
                   <Link href={'https://www.instagram.com/hufs_maple/'}>
                     instagram
                   </Link>
@@ -56,8 +56,7 @@ const DropdownContainer=styled.div`
   margin: 0 clamp(0.1rem,1vw,1.1rem);
   position: relative;
 
-  .dropdown-list{
-    color:white;
+  .dropdown-list-item{
     display:flex;
     justify-content:center;
   }
@@ -78,7 +77,7 @@ const DropdownContainer=styled.div`
     }
     animation : dropdown 0.4s linear;
   }
-  .dropdown-menu {
+  .dropdown-list {
     display: none;
     position: absolute;
     width: 100%;

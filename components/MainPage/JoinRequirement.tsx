@@ -109,7 +109,7 @@ const JoinReq=styled.div<Props>`
     cursor: pointer;
   }
 
-  background-color: #78ffc8;
+  // background-color: #78ffc8;
 `
 
 
