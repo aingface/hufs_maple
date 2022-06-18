@@ -1,8 +1,8 @@
 import React from 'react';
-import Layout from 'components/Layout';
+import Layout from 'components/Layout/Layout';
 import styled from 'styled-components';
-import Charts from 'components/Charts'
-import MemberAVG from 'components/MemberAVG'
+import Charts from 'components/InfoPage/Charts'
+import MemberAVG from 'components/InfoPage/MemberAVG'
 import BackgroundImg from 'components/BackgroundImg'
 
 interface Props{

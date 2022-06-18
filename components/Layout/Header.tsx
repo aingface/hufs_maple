@@ -46,8 +46,7 @@ const HeaderWrapper=styled.div<Props>`
   display: flex;
   justify-content: center;
   width:100%;
-  // height: clamp(2rem,7vh,3rem);
-  height: 10vh;
+  height: clamp(2rem,7vh,3rem);
 
   color: ${props=>props.positionY>props.innerHeight-30? '#000000' : '#FFFFFF' };
   background-color:${props=>props.positionY>props.innerHeight-30 && '#02020210' };
