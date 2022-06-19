@@ -14,12 +14,6 @@ const useScrollFadeIn = () => {
       current.style.opacity = 1;
       current.style.transform = 'translate3d(0, 0, 0)';
     }
-    else{
-      console.log('노출안됨')
-      current.style.transitionProperty = 'opacity';
-      current.style.opacity = 0;
-
-    }
   },[]);
   
   useEffect(()=>{

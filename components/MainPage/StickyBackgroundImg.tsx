@@ -2,21 +2,15 @@ import React, {useState,useEffect} from 'react';
 import Image from 'next/image'
 import Link from 'next/link';
 import styled from 'styled-components';
-import BackgroundImg from 'components/BackgroundImg'
-import {requirements} from 'public/data/MainPageData'
-import useScrollFadeIn from 'util/hooks/useScrollFadeIn'
 interface bgImgProps{
   imgUrl:string;
 }
-
 interface Props{
   scrollY:number;
   innerHeight:number;
 }
 
 const  StickyBackgroundImg= ({imgUrl}:bgImgProps)=> {
-  const animatedItem = useScrollFadeIn();
-
   const [scrollY,setscrollY]=useState(0);
   const [innerHeight,setInnerHeight]=useState(0);
 
@@ -51,8 +45,8 @@ const  StickyBackgroundImg= ({imgUrl}:bgImgProps)=> {
       
       <MainTitle innerHeight={innerHeight} scrollY={scrollY}>
         <div className='slide1'>
-          같이 모험할 외대 친구?<br/>
-          외메동에 와글와글!!
+          메이플 좋아하는 외대사람,<br/>
+          외메동에 모여있다 !!
         </div> 
         <div className='slide2'>
           메린이부터 메고수까지<br/> 
