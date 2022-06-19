@@ -27,6 +27,7 @@ const JoinRequirement = () => {
 
     return(
       <JoinReq key={req.title} 
+        // positionY={position} 
         innerWidth={innerWidth} 
         innerHeight={innerHeight}
 
@@ -115,30 +116,13 @@ const JoinReq=styled.div<Props>`
 
 //메인페이지 하단 가입 조건 항목 전체 wrapper 
 const JoinReqWrapper=styled.div`
+  z-index:3;
   display: flex;
   flex-direction: column;
-  margin: 25vh;
+  margin: 400vh 0 0 0;
   justify-content: center;
   align-items: center;
+  /* background-color: #ca35d2; */
 
-  /* background-color: #1aa861; */
-`
-const JoinButton=styled.button`
-  margin: 20vh 0 25vh 0;
-  padding: 1% 3%;
-  font-family: NEXON_Lv2_Gothic_OTF;
-  z-index: 3;
-  cursor: pointer;
-  width: clamp(8rem,30vw,12rem);
-  height: 3vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: clamp(1rem,1vw,2rem);
-  color:white;
-  background-color: rgb(229,72,82);
-  border-radius:5px;
-  :hover{
-    background-color: rgb(211,57,51);
-  }
+  position: absolute;
 `

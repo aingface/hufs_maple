@@ -16,6 +16,9 @@ const useScrollFadeIn = () => {
     }
     else{
       console.log('노출안됨')
+      current.style.transitionProperty = 'opacity';
+      current.style.opacity = 0;
+
     }
   },[]);
   

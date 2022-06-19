@@ -138,6 +138,7 @@ const LogoItem=styled.div`
   width: 100%;
   height: 100%;
   font-size: clamp(0.7rem,5vw,1.5rem);
+  font-family: NEXON_Lv2_Gothic_OTF;
   .logo-title{
     display: flex;
     flex-direction: row;  
