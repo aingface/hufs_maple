@@ -22,7 +22,7 @@ const  StickyBackgroundImg= ({imgUrl}:bgImgProps)=> {
 
   const onScroll=()=>{
     setscrollY(window.scrollY);
-    console.log( (window.innerHeight*3-window.scrollY)/5000 );
+    // console.log( (window.innerHeight*3-window.scrollY)/5000 );
   }
   useEffect(()=>{
     window.addEventListener("scroll",onScroll);
@@ -34,44 +34,49 @@ const  StickyBackgroundImg= ({imgUrl}:bgImgProps)=> {
   },[])
 
   return (
-  <>
-    <BgImgWrapper innerHeight={innerHeight} scrollY={scrollY}>
-      <Image
-        src={imgUrl}
-        alt={`background:Background Image.jpeg`}
-        layout='fill'
-        objectFit='cover'
-        objectPosition='center'
-        priority= {true}
-        />
-    </BgImgWrapper>
-    <MainTitle innerHeight={innerHeight} scrollY={scrollY}>
-      {/* <div className='slide11' {...animatedItem}>
-        @@@@@@@@@@@<br/>
-        @@@@@@@@@@@ 
-      </div> */}
-      {/* <div className='slide2'>
-        메린이부터 메고수까지<br/> 
-        신입생부터 졸업생까지
-      </div> */}
-      {/* <div className='slide3'>
-        HUFS 그리고 메이플<br/> 
-        외메동에서 더 즐겁게  
-      </div> */}
-    </MainTitle>
-    {/* <JoinButton>
-      <Link href={'https://open.kakao.com/me/hufsmaple'}>
-      가입하기
-      </Link>
-    </JoinButton> */}
-  </>
+    <>
+    {/* // <MainPageBannerWrapper> */}
+      <BgImg innerHeight={innerHeight} scrollY={scrollY}>
+        <ImgWrapper>
+          <Image
+            src={imgUrl}
+            alt={`background:BackgroundImage.jpeg`}
+            layout='fill'
+            objectFit='cover'
+            objectPosition='center'
+            priority= {true}
+          />
+        </ImgWrapper>    
+      </BgImg>
+      
+      <MainTitle innerHeight={innerHeight} scrollY={scrollY}>
+        <div className='slide1'>
+          같이 모험할 외대 친구?<br/>
+          외메동에 와글와글!!
+        </div> 
+        <div className='slide2'>
+          메린이부터 메고수까지<br/> 
+          신입생도 졸업생도 환영!!<br/>
+        </div>
+        <div className='slide3'>
+          HUFS 그리고 메이플<br/> 
+          외메동에서 더 알차게  
+          <JoinButton>
+            <Link href={'https://open.kakao.com/me/hufsmaple'}>
+            가입하기
+            </Link>
+          </JoinButton>
+        </div>
+      </MainTitle>
+    {/* </MainPageBannerWrapper> */}
+    </>
 );
 }
 
 export default StickyBackgroundImg;
 
 const JoinButton=styled.button`
-  margin: 200vh 0 0 0;
+  margin: 20vh 0 0 0;
   padding: 1% 3%;
   z-index: 5;
   cursor: pointer;
@@ -92,7 +97,7 @@ const JoinButton=styled.button`
   position: absolute;
 `
 
-const MainTitle=styled.p<Props>`
+const MainTitle=styled.div<Props>`
   z-index: 10;
   color: #ffffff;
   display: flex;
@@ -110,40 +115,53 @@ const MainTitle=styled.p<Props>`
   
   .slide1{
     position:absolute;
-    opacity: ${props=>
-      (props.innerHeight/10)/(props.scrollY+1)
+    z-index:10;
+    opacity: ${
+       props=>(props.innerHeight-props.scrollY)/(props.innerHeight/2)
     };
-    
   }
 
   .slide2{
     position:absolute;
-    opacity: ${props=>
-      (props.scrollY*0.5)/(props.innerHeight)
+    z-index:10;
+    opacity: ${
+      props=> props.innerHeight<props.scrollY ?
+    (props.innerHeight*2-props.scrollY)/ (props.innerHeight/2) : 0
     };
-    // margin: 10vh 0 0 0;
-    color:#000000;
+    transform: translateY( ${props=>-props.scrollY/100} );
   }
 
   .slide3{
     position:absolute;
-    opacity: ${props=>
-      (props.scrollY*0.5)/(props.innerHeight)
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    z-index:10;
+    opacity: ${
+      props=> props.innerHeight*2<props.scrollY ?
+      (props.innerHeight*3-props.scrollY)/(props.innerHeight/2) : 0
     };
-    // margin: 10vh 0 0 0;
     color:#000000;
   }
 `
 
-const BgImgWrapper=styled.div<Props>`
+const ImgWrapper=styled.div`
+  position:relative;
+  width:100vw;
+  height: 100vh;
+`
+
+const BgImg=styled.div<Props>`
   z-index: 0;
   width: 100vw;
   height: 100vh;
-  
-  opacity: ${props=>(props.innerHeight*3-props.scrollY)/1000 };
-  
+  opacity: ${props=>(props.innerHeight*3.5-props.scrollY)/1000 };
   top:0;
   position: sticky;
+`
+
+const MainPageBannerWrapper=styled.div`
+
 `
 
 // opacity: ${props=> props.scrollY> props.innerHeight*2 && 

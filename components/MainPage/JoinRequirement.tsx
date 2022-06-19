@@ -119,7 +119,7 @@ const JoinReqWrapper=styled.div`
   z-index:3;
   display: flex;
   flex-direction: column;
-  margin: 400vh 0 0 0;
+  margin: 420vh 0 0 0;
   justify-content: center;
   align-items: center;
   /* background-color: #ca35d2; */
