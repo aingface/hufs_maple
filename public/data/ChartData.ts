@@ -6,6 +6,7 @@ export interface PolarDataProps{
 }
 export interface BarDataProps{
   series: [{
+    name:string,
     data:number[]
   }],
   options:ApexOptions,
@@ -70,6 +71,7 @@ export const PolarData :PolarDataProps = {
 
 export const ColumnBarData:BarDataProps={
   series:[{
+    name: '서버',
     data:[20,17,10,10,9,5,3,3,5]  
   }],
   options: {
@@ -114,6 +116,7 @@ export const ColumnBarData:BarDataProps={
 //바차트 데이터 및 옵션
 export const BarData :BarDataProps = {
   series:[{
+      name:'마을',
       data:[1,2,13,10,9,13,9,2,6],
   }], 
   options: {
