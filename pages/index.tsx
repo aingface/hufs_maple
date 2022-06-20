@@ -1,14 +1,32 @@
 import type { NextPage } from 'next'
-// import MainContents from 'components/MainPage/MainContents'
 import MainLayout from 'components/Layout/MainLayout'
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import StickyBackgroundImg from 'components/MainPage/StickyBackgroundImg'
 import JoinRequirement from 'components/MainPage/JoinRequirement'
 
-
+import { useDispatch,useSelector } from 'react-redux';
+import { IState } from 'store/modules';
+import { setWindowSize } from 'store/modules/slice/windowSizeSlice';
 
 const Home: NextPage = () => {
+  const dispatch=useDispatch();
+  
+  const setMainPageSize=()=>{
+    dispatch(setWindowSize( {
+      innerWidth: window.innerWidth, innerHeight: window.innerHeight
+    }))
+  }
+  
+  useEffect(()=>{
+    setMainPageSize();
+  },[])
+
+  const innerWidth=useSelector((state:IState)=> state.windowSize.innerWidth );
+  const innerHeight=useSelector((state:IState)=> state.windowSize.innerHeight );
+  
+  // console.log(innerWidth);
+
   return (
       <MainLayout>
          <MainContentsWrapper>

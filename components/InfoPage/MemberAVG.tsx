@@ -4,19 +4,25 @@ import Image from 'next/image';
 import {AVG_ITEMS} from 'public/data/AVGItems'
 import useScrollCount from 'util/hooks/useScrollCount'
 
+import { useSelector } from 'react-redux';
+import { IState } from 'store/modules';
+
 interface Props{
   innerWidth:number;
   innerHeight:number;
 }
 
 function MemberAVG() {
-  const [innerWidth, setInnerWidth]=useState(0);
-  const [innerHeight, setInnerHeight]=useState(0);
+  // const [innerWidth, setInnerWidth]=useState(0);
+  // const [innerHeight, setInnerHeight]=useState(0);
   
-  useEffect(()=>{
-    setInnerWidth(window.innerWidth);
-    setInnerHeight(window.innerHeight);
-  },[])
+  const innerWidth=useSelector((state:IState)=> state.windowSize.innerWidth );
+  const innerHeight=useSelector((state:IState)=> state.windowSize.innerHeight );
+
+  // useEffect(()=>{
+  //   setInnerWidth(window.innerWidth);
+  //   setInnerHeight(window.innerHeight);
+  // },[])
 
   const AVGItemList=AVG_ITEMS.map((item)=>(
     <AVGCard key={item.title} 

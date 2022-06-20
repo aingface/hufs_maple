@@ -1,13 +1,12 @@
 //리듀서 모듈 통합
 import { combineReducers,AnyAction, CombinedState } from "@reduxjs/toolkit";
 import { HYDRATE } from "next-redux-wrapper";
-import { ReducerState } from "react";
-
-import usersReducer,{UserState} from 'store/modules/slice/addUsersSlice';
-
+import windowSizeSlice,{WindowSizeState} from 'store/modules/slice/windowSizeSlice';
+import scrollYSlice,{ScrollYState} from "./slice/scrollYSlice";
 //slice들 타입 모으기
 export interface IState{
-  users:UserState[];
+  windowSize: WindowSizeState;
+  scrollY: ScrollYState;
 }
 
 const rootReducer =(
@@ -19,7 +18,8 @@ const rootReducer =(
         return action.payload;
       default: {
         const combinedReducer=combineReducers({
-          users : usersReducer.reducer,      
+          windowSize : windowSizeSlice.reducer,  
+          scrollY : scrollYSlice.reducer,    
         })
         return combinedReducer(state,action);  
       }

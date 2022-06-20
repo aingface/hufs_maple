@@ -2,6 +2,10 @@ import React, {useState,useEffect} from 'react';
 import Image from 'next/image'
 import Link from 'next/link';
 import styled from 'styled-components';
+
+import { IState } from 'store/modules';
+import { useSelector } from 'react-redux';
+
 interface bgImgProps{
   imgUrl:string;
 }
@@ -11,21 +15,25 @@ interface Props{
 }
 
 const  StickyBackgroundImg= ({imgUrl}:bgImgProps)=> {
-  const [scrollY,setscrollY]=useState(0);
-  const [innerHeight,setInnerHeight]=useState(0);
-
-  const onScroll=()=>{
-    setscrollY(window.scrollY);
+  // const [scrollY,setscrollY]=useState(0);
+  // const [innerHeight,setInnerHeight]=useState(0);
+  // const innerWidth=useSelector((state:IState)=> state.windowSize.innerWidth );
+  const innerHeight=useSelector((state:IState)=> state.windowSize.innerHeight );
+  const scrollY:number=useSelector(
+    (state:IState)=> state.scrollY.scrollY
+  );
+  // const onScroll=()=>{
+    // setscrollY(window.scrollY);
     // console.log( (window.innerHeight*3-window.scrollY)/5000 );
-  }
-  useEffect(()=>{
-    window.addEventListener("scroll",onScroll);
-    setInnerHeight(window.innerHeight);
-    //메모리 누수 방지
-    return ()=>{
-      window.removeEventListener("scroll",onScroll);
-    }
-  },[])
+  // }
+  // useEffect(()=>{
+  //   window.addEventListener("scroll",onScroll);
+  //   // setInnerHeight(window.innerHeight);
+  //   //메모리 누수 방지
+  //   return ()=>{
+  //     window.removeEventListener("scroll",onScroll);
+  //   }
+  // },[])
 
   return (
     <>
