@@ -2,10 +2,8 @@ import React, {useState,useEffect} from 'react';
 import Image from 'next/image'
 import Link from 'next/link';
 import styled from 'styled-components';
-import BackgroundImg from 'components/BackgroundImg'
 import {requirements} from 'public/data/MainPageData'
 import useScrollFadeIn from 'util/hooks/useScrollFadeIn'
-
 
 interface Props{
   innerWidth:number;
@@ -27,7 +25,6 @@ const JoinRequirement = () => {
 
     return(
       <JoinReq key={req.title} 
-        // positionY={position} 
         innerWidth={innerWidth} 
         innerHeight={innerHeight}
 

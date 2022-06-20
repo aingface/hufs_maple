@@ -9,7 +9,7 @@ import { createGlobalStyle } from "styled-components";
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
-      <Component {...pageProps} />
+      <Component/>
     </>
 
   )

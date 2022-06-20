@@ -29,7 +29,6 @@ const  StickyBackgroundImg= ({imgUrl}:bgImgProps)=> {
 
   return (
     <>
-    {/* // <MainPageBannerWrapper> */}
       <BgImg innerHeight={innerHeight} scrollY={scrollY}>
         <ImgWrapper>
           <Image
@@ -46,7 +45,7 @@ const  StickyBackgroundImg= ({imgUrl}:bgImgProps)=> {
       <MainTitle innerHeight={innerHeight} scrollY={scrollY}>
         <div className='slide1'>
           메이플 좋아하는 외대사람,<br/>
-          외메동에 모여있다 !!
+          외메동에 다 모였다 !!
         </div> 
         <div className='slide2'>
           메린이부터 메고수까지<br/> 
@@ -62,7 +61,6 @@ const  StickyBackgroundImg= ({imgUrl}:bgImgProps)=> {
           </JoinButton>
         </div>
       </MainTitle>
-    {/* </MainPageBannerWrapper> */}
     </>
 );
 }
@@ -153,10 +151,3 @@ const BgImg=styled.div<Props>`
   top:0;
   position: sticky;
 `
-
-const MainPageBannerWrapper=styled.div`
-
-`
-
-// opacity: ${props=> props.scrollY> props.innerHeight*2 && 
-  // Number((props.innerHeight/(props.scrollY*4+1)).toFixed(2)) };

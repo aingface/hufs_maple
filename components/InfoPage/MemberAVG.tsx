@@ -5,37 +5,21 @@ import {AVG_ITEMS} from 'public/data/AVGItems'
 import useScrollCount from 'util/hooks/useScrollCount'
 
 interface Props{
-  // positionY:number;
   innerWidth:number;
   innerHeight:number;
 }
 
 function MemberAVG() {
-  // const [position,setPosition]=useState(0);
   const [innerWidth, setInnerWidth]=useState(0);
   const [innerHeight, setInnerHeight]=useState(0);
-
-  const onScroll=()=>{
-    // setPosition(window.scrollY);
-    // console.log(window.scrollY);
-  }
   
   useEffect(()=>{
-    // window.addEventListener("scroll",onScroll);
     setInnerWidth(window.innerWidth);
     setInnerHeight(window.innerHeight);
-
-    // console.log(innerWidth)
-    //메모리 누수 방지
-
-    return ()=>{
-      // window.removeEventListener("scroll",onScroll);
-    }
   },[])
 
   const AVGItemList=AVG_ITEMS.map((item)=>(
     <AVGCard key={item.title} 
-      // positionY={position} 
       innerWidth={innerWidth}
       innerHeight={innerHeight}
       >
@@ -57,14 +41,12 @@ function MemberAVG() {
   return (
     <AVGListWrapper>    
       <AVGListTitle 
-        // positionY={position} 
         innerWidth={innerWidth}
         innerHeight={innerHeight}
         >
           외메동 평균은
       </AVGListTitle>
       <AVGCardsWrapper 
-        // positionY={position} 
         innerWidth={innerWidth}
         innerHeight={innerHeight}
       >
