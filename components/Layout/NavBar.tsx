@@ -55,6 +55,7 @@ const DropdownContainer=styled.div`
   font-size: clamp(0.7rem,2vw,1.1rem);
   margin: 0 clamp(0.1rem,1vw,1.1rem);
   position: relative;
+  
 
   .dropdown-list-item{
     display:flex;
@@ -112,7 +113,6 @@ const MenuItem=styled.div`
   font-size: clamp(0.7rem,2vw,1.1rem);
   margin: 0 clamp(0.1rem,1vw,1.1rem);
   
-  
   :hover{
     background-color: #a7a7a84D;
     border-radius:3px;
@@ -138,7 +138,7 @@ const LogoItem=styled.div`
   width: 100%;
   height: 100%;
   font-size: clamp(0.7rem,5vw,1.5rem);
-  font-family: NEXON_Lv2_Gothic_OTF;
+  
   .logo-title{
     display: flex;
     flex-direction: row;  
@@ -160,4 +160,6 @@ const NavWrapper=styled.nav`
   width: 100vw;
   justify-content: center;
   position: relative;
+  font-family: NEXON_Lv2_Gothic_OTF_Light;
+
 `

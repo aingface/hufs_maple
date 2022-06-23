@@ -1,7 +1,7 @@
 //리듀서 모듈
 import {createSlice,PayloadAction} from '@reduxjs/toolkit';
 
-interface ScrollYState{
+export interface ScrollYState{
   scrollY:number;
 }
 

@@ -1,11 +1,27 @@
-import React from 'react';
+import React,{useEffect} from 'react';
 import Layout from 'components/Layout/Layout';
 import styled from 'styled-components';
 import Charts from 'components/InfoPage/Charts'
 import MemberAVG from 'components/InfoPage/MemberAVG'
 import BackgroundImg from 'components/BackgroundImg'
 
+import { useDispatch } from 'react-redux';
+import { setWindowSize } from 'store/modules/slice/windowSizeSlice';
+
 const info = () => {  
+
+  const dispatch=useDispatch();
+  
+  const setMainPageSize=()=>{
+    dispatch(setWindowSize( {
+      innerWidth: window.innerWidth, innerHeight: window.innerHeight
+    }))
+  }
+  
+  useEffect(()=>{
+    setMainPageSize();
+  },[])
+
   return (
     <Layout>
       <ContentsWrapper>

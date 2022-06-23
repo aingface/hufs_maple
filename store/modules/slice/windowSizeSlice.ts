@@ -12,7 +12,7 @@ const initialState :WindowSizeState={
   };
 
 export const windowSizeSlice=createSlice({
-  name: 'users',
+  name: 'windowSize',
   initialState :initialState,
   reducers:{
     setWindowSize:(state,action : PayloadAction<WindowSizeState>)=>{
