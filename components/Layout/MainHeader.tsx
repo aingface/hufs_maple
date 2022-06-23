@@ -1,16 +1,12 @@
 import React from 'react';
 import styled from 'styled-components'
 import NavBar from './NavBar'
-import { useState,useEffect } from 'react';
+import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 
 import { IState } from 'store/modules';
 import { useDispatch } from 'react-redux';
 import {setScrollY} from 'store/modules/slice/scrollYSlice'
-// interface Props{
-//   positionY:number;
-//   innerHeight:number;
-// }
 
 interface Props{
   scrollY:number;
