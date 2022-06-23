@@ -1,9 +1,9 @@
-import type { NextPage } from 'next'
-import MainLayout from 'components/Layout/MainLayout'
+import type { NextPage } from 'next';
+import MainLayout from 'components/Layout/MainLayout';
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
-import StickyBackgroundImg from 'components/MainPage/StickyBackgroundImg'
-import JoinRequirement from 'components/MainPage/JoinRequirement'
+import StickyBackgroundImg from 'components/MainPage/StickyBackgroundImg';
+import JoinRequirement from 'components/MainPage/JoinRequirement';
 
 import { useDispatch } from 'react-redux';
 import { IState } from 'store/modules';

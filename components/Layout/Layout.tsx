@@ -30,5 +30,5 @@ const LayoutWrapper=styled.div`
   backgroundColor:'#f6f7f9';
   
   /* max-width:1140px; */
-  min-height:300vh;
+  min-height:200vh;
 `
