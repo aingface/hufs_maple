@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import StickyBackgroundImg from 'components/MainPage/StickyBackgroundImg'
 import JoinRequirement from 'components/MainPage/JoinRequirement'
 
-import { useDispatch,useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { IState } from 'store/modules';
 import { setWindowSize } from 'store/modules/slice/windowSizeSlice';
 
@@ -21,11 +21,6 @@ const Home: NextPage = () => {
   useEffect(()=>{
     setMainPageSize();
   },[])
-
-  const innerWidth=useSelector((state:IState)=> state.windowSize.innerWidth );
-  const innerHeight=useSelector((state:IState)=> state.windowSize.innerHeight );
-  
-  // console.log(innerWidth);
 
   return (
       <MainLayout>
