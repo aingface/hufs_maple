@@ -9,7 +9,7 @@ const initialState : ScrollYState={
   scrollY: 0,
 } 
 
-export const scrollYSlice=createSlice({
+const scrollYSlice=createSlice({
   name: 'scrollYValue',
   initialState :initialState,
   reducers:{
