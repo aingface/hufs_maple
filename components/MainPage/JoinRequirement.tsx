@@ -55,7 +55,7 @@ const JoinRequirement = () => {
           <Image
             className='req-img'
             src={req.image}
-            alt={`background:${req.imageTitle}.png`}
+            alt={`${req.imageTitle}.png`}
             width="80%"
             height="80%"
             objectFit='cover'
@@ -64,7 +64,6 @@ const JoinRequirement = () => {
       </JoinReq>
     )
   })
-
 
   return (
     <JoinReqWrapper>
