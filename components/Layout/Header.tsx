@@ -15,14 +15,6 @@ interface Props{
 
 
 const Header = () => {
-  // const [position,setPosition]=useState(0);
-  // const [innerHeight, setInnerHeight]=useState(0);
-  
-  // const onScroll=()=>{
-  //   setPosition(window.scrollY);
-  //   // console.log(window.scrollY);
-  // }
-
   const dispatch=useDispatch();
 
   const innerHeight:number=useSelector(
@@ -38,8 +30,6 @@ const Header = () => {
 
   useEffect(()=>{
     window.addEventListener("scroll",onScroll);
-    // setInnerHeight(window.innerHeight);
-    // console.log(innerWidth)
     //메모리 누수 방지
     return ()=>{
       window.removeEventListener("scroll",onScroll);

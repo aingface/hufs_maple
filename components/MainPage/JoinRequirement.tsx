@@ -19,12 +19,10 @@ const JoinRequirement = () => {
    //메인페이지 하단 설명 개별 항목  
    const requirementsList=joinRequirements.map((req)=>{
     const animatedItem = useScrollFadeIn();
-
     return(
       <JoinReq key={req.title} 
         innerWidth={innerWidth} 
         innerHeight={innerHeight}
-
         {...animatedItem}
       >
         <JoinReqText>
@@ -59,6 +57,7 @@ const JoinRequirement = () => {
             width="80%"
             height="80%"
             objectFit='cover'
+            priority= {true} 
           />
         </ImgWrapper>
       </JoinReq>

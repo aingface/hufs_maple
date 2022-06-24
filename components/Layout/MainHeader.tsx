@@ -15,14 +15,6 @@ interface Props{
 
 
 const MainHeader = () => {
-  // const [position,setPosition]=useState(0);
-  // const [innerHeight, setInnerHeight]=useState(0);
-  
-  // const onScroll=()=>{
-  //   setPosition(window.scrollY);
-  //   // console.log(window.scrollY);
-  // }
-
   const dispatch=useDispatch();
 
   const innerHeight:number=useSelector(

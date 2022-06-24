@@ -1,4 +1,4 @@
-import React,{useState,useEffect} from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import Image from 'next/image';
 import {AVG_ITEMS} from 'public/data/AVGItems'
@@ -13,16 +13,8 @@ interface Props{
 }
 
 function MemberAVG() {
-  // const [innerWidth, setInnerWidth]=useState(0);
-  // const [innerHeight, setInnerHeight]=useState(0);
-  
   const innerWidth=useSelector((state:IState)=> state.windowSize.innerWidth );
   const innerHeight=useSelector((state:IState)=> state.windowSize.innerHeight );
-
-  // useEffect(()=>{
-  //   setInnerWidth(window.innerWidth);
-  //   setInnerHeight(window.innerHeight);
-  // },[])
 
   const AVGItemList=AVG_ITEMS.map((item)=>(
     <AVGCard key={item.title} 

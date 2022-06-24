@@ -1,4 +1,4 @@
-import React, {useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import PolarArea from 'components/Chart/PolarArea'
 import Bar from 'components/Chart/Bar'
@@ -20,19 +20,10 @@ interface btnProps{
 const charts=[<PolarArea/>,<ColumnBar/>,<Bar/>];
 
 const Charts = () => {
-  
-  // const [innerWidth, setInnerWidth]=useState(0);
-  // const [innerHeight, setInnerHeight]=useState(0);
-
   const innerWidth=useSelector((state:IState)=> state.windowSize.innerWidth );
   const innerHeight=useSelector((state:IState)=> state.windowSize.innerHeight );
 
   const [activatedIdx,setActivatedIdx]=useState(0);
-
-  // useEffect(()=>{
-  //   setInnerWidth(window.innerWidth);
-  //   setInnerHeight(window.innerHeight);
-  // },[])
 
   const handleOnClickBtn=(event:React.MouseEvent,btnNum:number)=>{
     setActivatedIdx(btnNum)
