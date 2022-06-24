@@ -9,19 +9,27 @@ interface bgImgProps{
 const  BackgroundImg= ({imgUrl}:bgImgProps)=> {
   return (
     <BgImgWrapper>
-      <Image
-        src={imgUrl}
-        alt={`background:Background Image.jpeg`}
-        layout='fill'
-        objectFit='cover'
-        objectPosition='center'
-        priority= {true}
-      />
+      <ImgWrapper>
+        <Image
+          src={imgUrl}
+          alt={`background:Background Image.jpeg`}
+          layout='fill'
+          objectFit='cover'
+          objectPosition='center'
+          priority= {true}
+        />
+      </ImgWrapper>
     </BgImgWrapper>
 );
 }
 
 export default BackgroundImg;
+
+const ImgWrapper=styled.div`
+  position:relative;
+  width:100vw;
+  height: 100vh;
+`
 
 const BgImgWrapper=styled.div`
   z-index: 0;

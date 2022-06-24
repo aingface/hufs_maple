@@ -51,15 +51,16 @@ const JoinRequirement = () => {
             }
           )}
         </JoinReqText>
-        <Image
-          className='req-img'
-          src={req.image}
-          alt={`background:${req.imageTitle}.png`}
-          width="80%"
-          height="80%"
-          objectFit='cover'
-        >
-        </Image>
+        <ImgWrapper>
+          <Image
+            className='req-img'
+            src={req.image}
+            alt={`background:${req.imageTitle}.png`}
+            width="80%"
+            height="80%"
+            objectFit='cover'
+          />
+        </ImgWrapper>
       </JoinReq>
     )
   })
@@ -73,6 +74,11 @@ const JoinRequirement = () => {
 };
 
 export default JoinRequirement;
+
+
+const ImgWrapper=styled.div`
+  position:relative;
+`
 
 //메인페이지 하단 가입조건 텍스트
 const JoinReqText=styled.div`
