@@ -4,9 +4,10 @@ import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import StickyBackgroundImg from 'components/MainPage/StickyBackgroundImg';
 import JoinRequirement from 'components/MainPage/JoinRequirement';
+import maple_island from '/public/images/maple_island.jpeg';
+
 
 import { useDispatch } from 'react-redux';
-import { IState } from 'store/modules';
 import { setWindowSize } from 'store/modules/slice/windowSizeSlice';
 
 const Home: NextPage = () => {
@@ -25,7 +26,7 @@ const Home: NextPage = () => {
   return (
       <MainLayout>
          <MainContentsWrapper>
-          <StickyBackgroundImg imgUrl={'/images/maple_island.jpeg'}/>
+          <StickyBackgroundImg imgUrl={maple_island }/>
           <JoinRequirement/>
         </MainContentsWrapper>  
       </MainLayout>

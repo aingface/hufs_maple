@@ -4,6 +4,8 @@ import styled from 'styled-components';
 import Charts from 'components/InfoPage/Charts'
 import MemberAVG from 'components/InfoPage/MemberAVG'
 import BackgroundImg from 'components/BackgroundImg'
+import reverse_city from '/public/images/reverse_city.jpeg';
+
 
 import { useDispatch } from 'react-redux';
 import { setWindowSize } from 'store/modules/slice/windowSizeSlice';
@@ -25,7 +27,7 @@ const info = () => {
   return (
     <Layout>
       <ContentsWrapper>
-        <BackgroundImg imgUrl={'/images/reverse_city.jpeg'}/>
+        <BackgroundImg imgUrl={reverse_city}/>
         <MemberAVG/>
         <Charts/>
       </ContentsWrapper>
