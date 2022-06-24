@@ -12,7 +12,7 @@ const  BackgroundImg= ({imgUrl}:bgImgProps)=> {
       <ImgWrapper>
         <Image
           src={imgUrl}
-          alt={`background:Background Image.jpeg`}
+          alt={`background:infoBgImage.jpeg`}
           layout='fill'
           objectFit='cover'
           objectPosition='center'

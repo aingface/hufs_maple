@@ -1,4 +1,4 @@
-import React, {useState,useEffect} from 'react';
+import React from 'react';
 import Image from 'next/image'
 import Link from 'next/link';
 import styled from 'styled-components';
@@ -15,40 +15,25 @@ interface Props{
 }
 
 const  StickyBackgroundImg= ({imgUrl}:bgImgProps)=> {
-  // const [scrollY,setscrollY]=useState(0);
-  // const [innerHeight,setInnerHeight]=useState(0);
-  // const innerWidth=useSelector((state:IState)=> state.windowSize.innerWidth );
   const innerHeight=useSelector((state:IState)=> state.windowSize.innerHeight );
   const scrollY:number=useSelector(
     (state:IState)=> state.scrollY.scrollY
   );
-  // const onScroll=()=>{
-    // setscrollY(window.scrollY);
-    // console.log( (window.innerHeight*3-window.scrollY)/5000 );
-  // }
-  // useEffect(()=>{
-  //   window.addEventListener("scroll",onScroll);
-  //   // setInnerHeight(window.innerHeight);
-  //   //메모리 누수 방지
-  //   return ()=>{
-  //     window.removeEventListener("scroll",onScroll);
-  //   }
-  // },[])
 
   return (
     <>
-      <BgImg innerHeight={innerHeight} scrollY={scrollY}>
+      <BgImgWrapper innerHeight={innerHeight} scrollY={scrollY}>
         <ImgWrapper>
           <Image
             src={imgUrl}
-            alt={`background:BackgroundImage.jpeg`}
+            alt={`background:indexImage.jpeg`}
             layout='fill'
             objectFit='cover'
             objectPosition='center'
             priority= {true}
           />
         </ImgWrapper>    
-      </BgImg>
+      </BgImgWrapper>
       
       <MainTitle innerHeight={innerHeight} scrollY={scrollY}>
         <div className='slide1'>
@@ -151,7 +136,7 @@ const ImgWrapper=styled.div`
   height: 100vh;
 `
 
-const BgImg=styled.div<Props>`
+const BgImgWrapper=styled.div<Props>`
   z-index: 0;
   width: 100vw;
   height: 100vh;

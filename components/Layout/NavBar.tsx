@@ -7,7 +7,7 @@ const NavBar = () => {
   return (
     <NavWrapper>     
       <LogoItem>
-        <Link href={'/'}>  
+        <Link href={'/hufs_maple'}>  
           <a className='logo-title'>
             <p>외메동</p>
             <Image

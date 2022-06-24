@@ -42,6 +42,5 @@ const ContentsWrapper=styled.div`
   flex-direction: column;
   align-items: center;
   font-family: Maplestory_OTF_Light;
-  /* min-width: 280px; */
   width: 100vw;
 `
