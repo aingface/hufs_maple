@@ -1,8 +1,8 @@
-import React, {useState,useEffect} from 'react';
+import React from 'react';
 import Image from 'next/image'
 import Link from 'next/link';
 import styled from 'styled-components';
-import {requirements} from 'public/data/MainPageData'
+import {joinRequirements} from 'public/data/MainPageData'
 import useScrollFadeIn from 'util/hooks/useScrollFadeIn'
 
 import { useSelector } from 'react-redux';
@@ -13,19 +13,11 @@ interface Props{
 }
 
 const JoinRequirement = () => {
-  // const [innerWidth, setInnerWidth]=useState(0);
-  // const [innerHeight, setInnerHeight]=useState(0);
-
   const innerWidth=useSelector((state:IState)=> state.windowSize.innerWidth );
   const innerHeight=useSelector((state:IState)=> state.windowSize.innerHeight );
 
-  // useEffect(()=>{
-  //   setInnerWidth(window.innerWidth);
-  //   setInnerHeight(window.innerHeight);
-  // },[])
-
    //메인페이지 하단 설명 개별 항목  
-   const requirementsList=requirements.map((req)=>{
+   const requirementsList=joinRequirements.map((req)=>{
     const animatedItem = useScrollFadeIn();
 
     return(
@@ -62,7 +54,7 @@ const JoinRequirement = () => {
         <Image
           className='req-img'
           src={req.image}
-          alt={`background:${req.image}.png`}
+          alt={`background:${req.imageTitle}.png`}
           width="80%"
           height="80%"
           objectFit='cover'
