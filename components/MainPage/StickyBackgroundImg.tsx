@@ -1,5 +1,5 @@
 import React from 'react';
-import Image from 'next/image'
+import Image,{StaticImageData} from 'next/image';
 import Link from 'next/link';
 import styled from 'styled-components';
 
@@ -7,7 +7,7 @@ import { IState } from 'store/modules';
 import { useSelector } from 'react-redux';
 
 interface bgImgProps{
-  imgUrl:string;
+  imgUrl:StaticImageData;
 }
 interface Props{
   scrollY:number;

@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
-import Image from 'next/image';
+import Image,{StaticImageData} from 'next/image';
 
 interface bgImgProps{
-  imgUrl:string;
+  imgUrl:StaticImageData;
 }
 
 const  BackgroundImg= ({imgUrl}:bgImgProps)=> {

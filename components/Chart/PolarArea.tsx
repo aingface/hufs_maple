@@ -3,7 +3,6 @@ import dynamic from 'next/dynamic'
 const ApexChart = dynamic(() => import("react-apexcharts"), { ssr: false });
 import {PolarData} from 'public/data/ChartData'
 import styled from 'styled-components';
-import { redirect } from 'next/dist/server/api-utils';
 
 const PolarArea = () => {
   return (    
@@ -37,7 +36,7 @@ const ChartWrapper=styled.div`
     margin: 5vh 0 0 0;
   }
   .chart-title{
-    font-size: 3vw;
+    font-size: clamp(1rem,3vw,1.5rem);
     font-family: Maplestory_OTF_Light;
     margin: 5vh 0;
   }

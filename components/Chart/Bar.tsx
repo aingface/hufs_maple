@@ -34,7 +34,7 @@ const ChartWrapper=styled.div`
     margin: 5vh 0 0 0;
   }
   .chart-title{
-    font-size: 3vw;
+    font-size: clamp(1rem,3vw,1.5rem);
     font-family: Maplestory_OTF_Light;
     margin: 5vh 0;
   }

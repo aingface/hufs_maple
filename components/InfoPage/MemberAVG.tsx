@@ -61,42 +61,41 @@ const AVGCard=styled.div<Props>`
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  margin:${ props=>props.innerWidth*1.5 <= props.innerHeight ?  '2vh 0' : '0 2vw'};
-  width: ${ props=>props.innerWidth*1.5 <= props.innerHeight ?  '45vw' : '17vw'};
-  height: ${ props=>props.innerWidth*1.5 <= props.innerHeight ? '22vh' : '40vh'};
-  padding: ${ props=>props.innerWidth*1.5 <= props.innerHeight ? '0 7vh;' : '2vh 5vh;'}; 
+  margin:${ props=>props.innerWidth*1.3 <= props.innerHeight ?  '2vh 0' : '0 2vw'};
+  width: ${ props=>props.innerWidth*1.3 <= props.innerHeight ?  '40vw' : '17vw'};
+  height: ${ props=>props.innerWidth*1.3 <= props.innerHeight ? '25vh' : '40vh'};
+  padding: ${ props=>props.innerWidth*1.3 <= props.innerHeight ? '0 7vh;' : '2vh 5vh;'}; 
 
   .AVGListTitle{
-    font-size: ${ props=>props.innerWidth*1.5 <= props.innerHeight ? '2.5vw' : '1.5vw' };
+    font-size: ${ props=>props.innerWidth*1.3 <= props.innerHeight ? '2.5vw' : '1.5vw' };
     color:#000000e8;
     margin-top: 2vh;
   }
   .AVGValue{
-    font-size: ${ props=>props.innerWidth*1.5 <= props.innerHeight ? '7vw' : '5vw'};
+    font-size: ${ props=>props.innerWidth*1.3 <= props.innerHeight ? '7vw' : '5vw'};
     color:#000000;
     font-weight: bold;
   }
   background-color : #ffffff77;
   border-radius: 10px;
-  /* border: 1px solid red; */
+  // border: 1px solid red;
 `
 
 const AVGListTitle=styled.p<Props>`  
   z-index: 10;
-  font-size: ${ props=>props.innerWidth*1.5 <= props.innerHeight ? '8vw' : '3vw' };
-  margin: 7vh;
+  font-size: ${ props=>props.innerWidth*1.3 <= props.innerHeight ? '5vw' : '3vw' };
+  margin: 1vh 0;
   color: #ffffff;
-
 `
 const AVGCardsWrapper=styled.div<Props>`
   z-index: 1;
   display: flex;
-  flex-direction: ${props=>props.innerWidth*1.5 <= props.innerHeight ? 'column' : 'row' };
+  flex-direction: ${props=>props.innerWidth*1.3 <= props.innerHeight ? 'column' : 'row' };
   justify-content: center;
   align-items: center;
   width: 90vw;
   font-family: Maplestory_OTF_Light;
-  margin: ${ props=>props.innerWidth*1.5 <= props.innerHeight ? '0vh': '10vh 0 24.5vh 0' };
+  margin: ${ props=>props.innerWidth*1.3 <= props.innerHeight ? '0vh': '10vh 0 24.5vh 0' };
   
   // background-color: #00eeffa1; 
 `
@@ -107,4 +106,7 @@ const AVGListWrapper=styled.div`
   justify-content: center;
   align-items: center; 
   width: 100vw;
+  height: 100vh;
+
+  /* border:2px solid green; */
 `

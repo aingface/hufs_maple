@@ -39,19 +39,17 @@ const Charts = () => {
   )
 
   return (
-    <>
+    <ChartContainer>
       <ToggleBtnWrapper>
         {ToggleBtnList}
       </ToggleBtnWrapper>
-      <ChartBoardWrapper>
-        <ChartWrapper
-          innerWidth={innerWidth} 
-          innerHeight={innerHeight}
-        >    
-          {charts[activatedIdx]}
-        </ChartWrapper>
-      </ChartBoardWrapper>
-    </>
+      <ChartWrapper
+        innerWidth={innerWidth} 
+        innerHeight={innerHeight}
+      >    
+        {charts[activatedIdx]}
+      </ChartWrapper>
+    </ChartContainer>
   );
 };
 
@@ -74,6 +72,7 @@ const ToggleBtn=styled.button<btnProps>`
   // background: red;
 `
 const ToggleBtnWrapper=styled.div`
+  position:absolute;
   width: 100vw;
   height: clamp(2rem,15vh,2.5rem);
   display: flex;
@@ -82,24 +81,24 @@ const ToggleBtnWrapper=styled.div`
   z-index:3;
   /* background: #1154ff; */
   /* border:2px solid red; */
-  margin-top: 1.1rem;
 `
 const ChartWrapper=styled.div<Props>`
   width : ${props=>props.innerWidth*1.5<props.innerHeight ? '90vw':'35vw'};
-  margin: 10vh 0;
+  margin: auto 0;
   display: flex;
   align-items: center;
 
-  /* background-color: #94bde0; */
+  // background-color: #94bde0;
 `
-const ChartBoardWrapper=styled.div`
+const ChartContainer=styled.div`
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   min-width: 350px;
   height: 100vh;
   width: 100vw;
-  
+
+  /* border:2px solid yellow; */
   /* background-color: #8f69b5; */
 `
