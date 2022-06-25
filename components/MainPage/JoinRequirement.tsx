@@ -98,8 +98,8 @@ const JoinReq=styled.div<Props>`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: ${props=>props.innerWidth*1.78 <= props.innerHeight ?
-  '95vw':'clamp(30rem,45vw,35rem)'};
+  width: ${props=>props.innerWidth*1.3 < props.innerHeight ?
+    '80vw':'45vw'};
   padding: 1vh 3vh;
   margin: 3vh 0;
   
